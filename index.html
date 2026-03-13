@@ -1,0 +1,9723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Xatspace Replica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#162335;
+  --card:#f6f7ea;
+  --accent:#9a4dff;
+  --shadow:0 40px 70px rgba(0,0,0,.55);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',system-ui,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:
+    linear-gradient(to bottom, rgba(20, 20, 20, 0.445), rgba(7, 7, 7, 0.95)),
+    url("https://xatimg.com/image/5hutBXDibzCD.jpg");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CONTENEDOR */
+.wrapper{
+  top:30px;
+  width:1100px;
+  height:650px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CARD */
+.card{
+  width:900px;
+  background:#202020; /* gris */
+  border-radius:10px;
+  display:flex;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+
+/* PANEL IZQUIERDO (MARCO) */
+.left{
+  width:48%;
+  padding:24px;                 /* 🔥 distancia blanca real */
+  background:#202020; /* gris */
+  border-top-left-radius:10px;
+  border-bottom-left-radius:10px;
+  position:relative;
+}
+
+/* IMAGEN INTERNA */
+.left-inner{
+  width:150%;
+  height:100%;
+  border-radius:10px;
+  overflow:hidden;
+  position:relative;
+  background:
+      linear-gradient(to bottom, rgba(78, 78, 78, 0.301), rgba(17, 17, 17, 0.95)),
+    url("https://img.freepik.com/foto-gratis/pintura-lago-montana-montana-fondo_188544-9126.jpg?semt=ais_hybrid&w=740&q=80");
+  background-size:cover;
+  background-position:center;
+}
+
+/* CORTES CURVOS SÓLIDOS */
+.left-inner::before,
+.left-inner::after{
+  content:"";
+  position:absolute;
+  right:-20px;
+  width:260px;
+  height:550px;
+  background:#202020; /* mismo gris */
+  border-radius:3%;
+    transform:rotate(30deg);
+}
+
+
+
+/* MENU */
+.menu{
+  position:absolute;
+  top:22px;
+  left:22px;
+  width:26px;
+}
+
+/* MENU BOX */
+.menu-box{
+  position:absolute;
+  top:22px;
+  left:22px;
+  z-index:20;
+}
+
+.menu-btn{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  height:40px;
+  background:#111;
+  color:white;
+  border:none;
+  padding:8px 27px 8px 11px;
+  border-radius:10px;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:3px;
+  cursor:pointer;
+
+  box-shadow:0 6px 18px rgba(0,0,0,.4);
+  overflow:hidden;
+}
+
+/* BLOQUE HAMBURGUESA */
+.menu-icon{
+  background:#00000009;
+  padding:8px 10px;
+  border-radius:7px 1px 4px 7px; /* 👈 cortado */
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+/* RAYITAS */
+.menu-icon i{
+  width:14px;
+  height:2px;
+  background:white;
+  display:block;
+  border-radius:2px;
+}
+
+/* HOVER PRO */
+.menu-box:hover .menu-btn{
+  background:#8d8d8d;
+}
+
+.menu-box:hover .menu-icon{
+  background:rgba(0, 0, 0, 0.041);
+}
+
+
+/* FONDO DEL DROPDOWN */
+.menu-dropdown{
+  position:absolute;
+  top:34px;
+  left:1px;
+  width:125px;
+  padding:14px;
+  background:rgba(20, 20, 20, 0.603);
+  backdrop-filter:blur(6px);
+  border-radius:2px;
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+
+  display:flex;
+  flex-direction:column;
+  gap:0px;
+
+  opacity:0;
+  transform:translateY(-10px);
+  pointer-events:none;
+  transition:.3s ease;
+  z-index:-2;
+}
+
+/* MOSTRAR AL PASAR EL MOUSE */
+.menu-box:hover .menu-dropdown{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+/* BOTONES */
+.menu-dropdown button{
+  background:rgba(20, 20, 20, 0);
+  color:white;
+  border:none;
+  margin-left:-10px;
+  width:120%;
+  padding:6px;
+  border-radius:3px;
+  cursor:pointer;
+  transition:.25s;
+    font-size:12px;
+
+}
+
+.menu-dropdown button:hover{
+  background:#8d8d8d;
+}
+
+
+.menu span{
+  display:block;
+  height:3px;
+  background:white;
+  margin:5px 0;
+  border-radius:2px;
+}
+
+/* PANEL DERECHO */
+.right{
+  width:62%;
+  padding:50px;
+  position:relative;
+}
+
+/* AVATAR */
+.avatar-wrap{
+  position:absolute;
+  top:-126px;
+  left:16%;
+  transform:translateX(-50%);
+  z-index:10;
+}
+
+.avatar-outer{
+  width:210px;
+  height:210px;
+  border-radius:50%;
+  background:
+    linear-gradient(
+      to bottom,
+      #707070 0%,
+      #707070 60%,
+      #252525 60%,
+      #252525 100%
+    );
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+
+
+
+
+.avatar-dot{
+  position:absolute;
+  top:22px;
+  left:26px;
+  width:12px;
+  height:12px;
+  background:var(--card);
+  border-radius:50%;
+}
+
+.avatar-inner{
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  background:var(--card);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.avatar-inner img{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+
+
+/* INFO */
+.info{
+  text-align:center;
+  margin-top:60px;
+  margin-left:-74%;
+}
+
+.badge{
+  background:var(--accent);
+  color:white;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:600;
+}
+
+h2{
+  color: #555;
+  font-size:34px;
+}
+
+/* FRASE CON FONDO */
+.quote{
+  display:inline-block;
+  font-size:12px;
+  color:#ffffff;
+  margin:40px 60px;
+  padding:14px 28px;
+
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(8px);
+  border-radius:30px;
+
+  box-shadow:0 10px 25px rgba(0,0,0,.5);
+  letter-spacing:.5px;
+}
+
+/* CURSOR PARPADEO */
+.cursor{
+  display:inline-block;
+  margin-left:3px;
+  animation:blink 1s infinite;
+  color:#ffffff;
+}
+
+@keyframes blink{
+  0%{opacity:1;}
+  50%{opacity:0;}
+  100%{opacity:1;}
+}
+
+
+.id{
+  color: #bbbbbb;
+  font-size:16px;
+  font-weight:700;
+  margin:7x 0 20px;
+}
+
+
+
+
+.dot{
+  width:12px;
+  height:12px;
+  background:red;
+  border-radius:50%;
+  margin-top:6px;
+}
+
+
+
+/* MENU LATERAL DERECHO */
+.side-menu{
+  position:absolute;
+  right:-80px; /* separación del card */
+  top:40%;
+  transform:translateY(-50%);
+
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* BOTONES */
+.side-menu button{
+  width:150px;
+  background:#141414;
+  color:white;
+  padding:15px 12px;
+  border: 0px solid #111;
+  border-radius:10px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.5px;
+  cursor:pointer;
+
+  box-shadow:0 1px 10px rgba(0, 0, 0, 0.26);
+  transition:.25s ease;
+}
+
+/* HOVER */
+.side-menu button:hover{
+  background:#8d8d8d;
+  transform:translateX(-6px);
+}
+
+/* BLOQUE HOME + REDES */
+.home-social{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:7px;
+}
+
+/* HOME FONDOS */
+.home-link{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:#111;
+  padding:10px 10px;
+  border-radius:50%;
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  font-size:14px;
+
+  box-shadow:0 6px 18px rgba(0,0,0,.5);
+  transition:.25s;
+}
+
+.home-link img{
+  width:20px;
+  filter:invert(1);
+}
+
+.home-link:hover{
+  background:#8d8d8d;
+}
+
+/* ICONOS SOCIALES */
+.social-icons{
+  display:flex;
+  gap:7px;
+}
+
+.social-icons a{
+  width:38px;
+  height:38px;
+  background:#111;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.5);
+  transition:.25s;
+}
+
+.social-icons img{
+  width:18px;
+}
+
+.social-icons a:hover{
+  background:#8d8d8d;
+}
+
+/* ========================= */
+/* SCROLL MODERNO GRIS */
+/* ========================= */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#dcdcdc; /* gris claro */
+  border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #cfcfcf 100%
+  );
+  border-radius:10px;
+  border:2px solid #dcdcdc;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #b5b5b5 100%
+  );
+}
+
+/* Firefox */
+html{
+  scrollbar-width:thin;
+  scrollbar-color:#cfcfcf #dcdcdc;
+}
+
+
+
+/* ========================= */
+/* MENU PRINCIPAL MODERNO */
+/* ========================= */
+
+.main-menu{
+  position:absolute;
+  top:-5px;
+  right:0px;
+  display:flex;
+  gap:2px;
+  padding:7px 25px;
+  background:rgba(20,20,20,.85);
+  backdrop-filter:blur(6px);
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+  z-index:0;
+}
+
+.menu-item{
+  position:relative;
+  left:14px
+}
+
+/* BOTONES */
+.main-menu button{
+  width:75px;
+  background:#1111112c;
+  color:white;
+  border:0px solid rgb(20, 20, 20);
+  padding:8px 17px;
+  font-size:10px;
+  gap:4px;
+  font-weight:700;
+  letter-spacing:0px;
+  border-radius:4px;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.main-menu button:hover{
+  background:#8d8d8d;
+}
+
+/* SUBMENU */
+.submenu{
+  position:absolute;
+  top:28px;
+  left:-30px;
+  width:144px;
+  background:rgb(20, 20, 20);
+  backdrop-filter:blur(6px);
+
+  border-radius:1px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:0px;
+
+  opacity:0;
+  transform:translateY(-10px);
+  pointer-events:none;
+  transition:.3s ease;
+  z-index: 1;
+}
+
+/* DESPLEGAR EN HOVER */
+.menu-item:hover .submenu{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+/* LINKS SUBMENU */
+.submenu a{
+  text-decoration:none;
+  background:#20202023;
+  color:white;
+  margin-left:-6px;
+  width:140px;
+  padding:8px;
+  border-radius:2px;
+  font-size:11px;
+
+  gap:0px;
+  
+  text-align:center;        /* 👈 centra el texto */
+  display:flex;             /* 👇 centra real */
+  justify-content:center;
+  align-items:center;
+}
+
+.submenu a:hover{
+  background:#8d8d8d;
+  transform:translateX(-4px);
+}
+
+
+
+
+
+/* ========================= */
+/* MODAL PRECIOS */
+/* ========================= */
+
+#priceModal.modal{
+  position:fixed;
+  inset:0;
+
+  background:linear-gradient(
+    135deg,
+    rgba(0,0,0,.75),
+    rgba(30,30,30,.85)
+  );
+
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+
+/* ========================= */
+/* CAJA MODAL PRINCIPAL */
+/* ========================= */
+
+#priceModal .modal-content{
+
+  width:1200px;
+  max-width:100%;
+height:auto;
+min-height:auto;
+
+  border-radius:10px;
+padding:10px 30px 34px;
+  position:relative;
+
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+
+  border:1px solid rgba(255,255,255,0.25);
+
+  box-shadow:
+    0 8px 32px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.2);
+
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+}
+
+
+/* ========================= */
+/* TITULO FLOTANTE SUPERIOR */
+/* ========================= */
+
+.modalTitulo{
+
+  position:absolute;
+  top:-26px;
+  left:50%;
+  transform:translateX(-50%);
+
+  padding:16px 60px;
+  border-radius:8px;
+
+  background:linear-gradient(#8f8f8f 50%, #585858 50%);
+  color:white;
+  font-weight:700;
+  letter-spacing:1px;
+
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+
+/* ========================= */
+/* BOTON CERRAR */
+/* ========================= */
+
+.modalClose{
+
+  position:absolute;
+  top:-5px;
+  right:-6px;
+
+  width:26px;
+  height:26px;
+
+  border-radius:10%;
+  background:#535353f1;
+
+  display:grid;
+  place-items:center;
+
+  cursor:pointer;
+  font-size:18px;
+  transition:.3s;
+}
+
+.modalClose:hover{
+  background:#bdbdbd;
+}
+
+
+/* ========================= */
+/* CONTENEDOR PRECIOS */
+/* ========================= */
+
+.modalListado{
+  margin-top:50px;
+
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+
+  gap:20px;
+
+  width:100%;
+
+  align-items:start;   /* evita estiramientos raros */
+}
+
+/* ========================= */
+/* CUADROS GLASS */
+/* ========================= */
+
+.modalCuadro{
+
+  border-radius:10px;
+  padding:18px;
+
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,0.15);
+
+  transition:.35s ease;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+.modalCuadro:hover{
+
+  transform:translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.35);
+
+  border:1px solid rgba(255,255,255,0.3);
+}
+
+/* ========================= */
+/* SECCIONES */
+/* ========================= */
+
+.modalSeccion{
+
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:1px;
+
+  color:#00ffd5;
+
+  padding-bottom:1px;
+  margin-bottom:5px;
+
+  border-bottom:1px solid rgba(255,255,255,0.2);
+
+  text-transform:uppercase;
+}
+
+
+/* ========================= */
+/* LINEAS */
+/* ========================= */
+
+.modalLinea{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+
+  gap:8px;
+  margin:5px 0;
+
+  font-size:13px;
+  color:#e0e0e0;
+  line-height:1.4;
+}
+
+/* TEXTO IZQUIERDA */
+
+.modalLinea span{
+  flex:1;
+  word-break:break-word;
+}
+
+
+/* PRECIOS */
+
+.modalLinea b{
+  color:#ffcc00;
+  font-weight:700;
+
+  min-width:90px;
+  text-align:right;
+  white-space:nowrap;
+}
+
+
+/* ========================= */
+/* MUSIC PLAYER (DISCO FIJO) */
+/* ========================= */
+
+.music-player{
+  position:absolute;
+  right:-16%;
+  bottom:80px;
+  width:160px;
+  height:160px;
+}
+
+/* ===== DISCO (FIJO) ===== */
+
+.disc-wrapper{
+  position:absolute;
+  right:0;
+  top:0;
+  width:160px;
+  height:160px;
+  z-index:5;             /* siempre arriba */
+}
+
+.disc{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  background:#111;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  animation:spin 8s linear infinite;
+}
+
+.disc img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+@keyframes spin{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
+}
+
+/* ===== ONDA SONORA ===== */
+
+.sound-wave{
+  position:absolute;
+  margin-left:30px;
+  margin-top:30px;
+  inset:-30px;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,.15);
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);opacity:.5}
+  100%{transform:scale(1.2);opacity:0}
+}
+
+/* ===== PANEL (SE DESLIZA, NO EL DISCO) ===== */
+
+.player-panel{
+  position:absolute;
+  right:80px;      /* empieza escondido detrás del disco */
+  top:10px;
+  width:260px;
+  height:175px;
+
+  background:rgba(20,20,20,.85);
+  backdrop-filter:blur(10px);
+  border-radius:10px;
+  padding:14px;
+
+  box-shadow:0 15px 40px rgba(0,0,0,.6);
+
+  opacity:0;
+  transform:translateX(40px); /* entra desde la derecha */
+  transition:.5s ease;
+}
+
+/* APARECE SOLO EL PANEL */
+.music-player:hover .player-panel{
+  opacity:1;
+  transform:translateX(0);
+}
+
+/* INFO */
+.song-info{
+  text-align:center;
+  margin-bottom:6px;
+}
+
+.artist{
+  display:block;
+  font-size:12px;
+  color:#f7b14a;
+  font-weight:700;
+}
+
+.title{
+  font-size:8px;
+  color:white;
+  font-weight:600;
+}
+
+/* PLAYLIST */
+.playlist{
+  background:rgba(0,0,0,.45);
+  border-radius:4px;
+  padding:8px;
+  font-size:7px;
+  margin:8px 0;
+
+  max-height:75px;              /* altura visible */
+  overflow-y:auto;
+
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+/* Scroll SOLO de playlist */
+.playlist::-webkit-scrollbar{
+  width:6px;
+}
+
+.playlist::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.playlist::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,.25);
+  border-radius:10px;
+}
+
+.playlist::-webkit-scrollbar-thumb:hover{
+  background:rgba(255,255,255,.45);
+}
+
+/* CADA PISTA */
+.track{
+  padding:3px 1px;
+  border-radius:4px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  color:#ccc;
+  cursor:pointer;
+  transition:.25s ease;
+
+  display:flex;
+  justify-content:center;
+  text-align:center;
+}
+
+/* Hover elegante */
+.track:hover{
+  background:rgba(255,255,255,.12);
+  border-color:rgba(255,255,255,.2);
+}
+
+/* ACTIVA (BLANCO BONITO) */
+.track.active{
+  background:linear-gradient(
+    90deg,
+    rgba(255,255,255,.95),
+    rgba(220,220,220,.85)
+  );
+  color:#111;
+  font-weight:700;
+  border:1px solid white;
+  box-shadow:0 0 12px rgba(255,255,255,.6);
+}
+
+
+/* CONTROLES */
+.controls{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:4px;
+}
+
+.controls button{
+  background:#111;
+  border:none;
+  color:white;
+  padding:6px 10px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:12px;
+  transition:.2s;
+}
+
+.controls button:hover{
+  background:#8d8d8d;
+}
+
+/* ================= MARRIED HEART ================= */
+
+.married-wrap{
+  position:absolute;
+  top:60px;
+  left:70px;
+  bottom:10px;
+  z-index:20;
+}
+
+.married-heart{
+  width:36px;
+  height:36px;
+  background:radial-gradient(circle at top,#ff9aa2,#d80032);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:18px;
+  color:#fff;
+  cursor:pointer;
+
+  box-shadow:
+    0 0 8px rgba(255,60,100,.8),
+    0 0 18px rgba(255,0,80,.6),
+    inset 0 2px 6px rgba(255,255,255,.6),
+    inset 0 -4px 8px rgba(0,0,0,.4);
+
+  animation:pulseHeart 1.8s infinite;
+  position:relative;
+}
+
+@keyframes pulseHeart{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.15);}
+  100%{transform:scale(1);}
+}
+
+/* tooltip */
+.married-tooltip{
+  position:absolute;
+  bottom:100%;
+  left:50%;
+  transform:translateX(-50%) scale(.8);
+  background:#964d5d7c;
+  padding:6px 10px;
+  border-radius:8px;
+  border:1px solid #2b2b2b0a;
+  color:#f35980;
+  font-size:11px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  white-space:nowrap;
+  box-shadow:0 0 10px rgba(0,0,0,.7);
+}
+
+.married-heart:hover .married-tooltip{
+  opacity:1;
+  transform:translateX(-50%) scale(1);
+}
+
+/* glow hover */
+.married-heart:hover{
+  box-shadow:
+    0 0 12px rgba(255,120,160,1),
+    0 0 30px rgba(255,0,100,.9);
+}
+
+/* ========================= */
+/* MARRIED MODAL EXACT STYLE */
+/* ========================= */
+
+.married-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(4px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.married-box{
+  width:700px;
+  max-width:105%;
+  background:#eeb3cc;
+  border-radius:10px;
+  padding:24px;
+  position:relative;
+  box-shadow:0 40px 80px rgba(0,0,0,.6);
+}
+
+.married-inner{
+  position:relative;
+}
+
+.married-header{
+  margin-left:45%;
+  color:#f0f0f0;
+  font-size:23px;
+  margin-bottom:15px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.married-header .heart{
+  font-size:24px;
+}
+
+/* CARD INTERNA */
+.married-card{
+  background:#f7cae4;
+  border-radius:10px;
+  display:flex;
+  overflow:hidden;
+  position:relative;
+}
+
+/* LADO IZQUIERDO */
+.married-left{
+  width:55%;
+  padding:50px 80px;
+  display:flex;
+  flex-direction:column;
+}
+
+
+.married-left h2{
+  left:80%;
+  color:#9a4dff;
+  font-size:32px;
+}
+
+.status{
+  color:#555;
+  margin:6px 0;
+}
+
+.married-id{
+  font-size:14px;
+  font-weight:800;
+  color:#f3a2e8;
+  margin:10px 0 25px;
+}
+
+.married-btn{
+  background:#9a4dff;
+  color:white;
+  border:none;
+  width:42%;
+  margin-top:30px;
+  padding:12px 22px;
+  border-radius:25px;
+   font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(154,77,255,.4);
+  transition:.25s;
+  text-decoration: none;
+}
+
+.married-btn:hover{
+  background:#7c36db;
+}
+
+.married-text{
+  font-size:14px;
+  color:#9b7483;
+  max-width:350px;
+  margin-bottom:25px;
+}
+
+
+/* LADO DERECHO */
+.married-right{
+  width:45%;
+  position:relative;
+}
+
+.bg-img{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.85)),
+    url("https://xatimg.com/image/aNd8WJ9xes4D.jpg");
+  background-size:cover;
+  background-position:center;
+  clip-path:polygon(70% 0%,100% 0%,100% 100%,0% 100%);
+}
+
+/* AVATAR CIRCULAR */
+.married-avatar{
+  position:absolute;
+  right:28%;
+  top:50%;
+  transform:translate(50%,-50%);
+  width:230px;
+  height:230px;
+  border-radius:50%;
+  background:#f5c5e9;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 15px 40px rgba(0, 0, 0, 0.144);
+}
+
+.married-avatar img{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* BOTON CERRAR */
+.married-close{
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  width:28px;
+  height:28px;
+  background:#f58ec2;
+  border-radius:20%;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  color:rgb(252, 206, 220);
+  font-size:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.4);
+  transition:.2s;
+}
+
+.married-close:hover{
+  background:#f8c4de;
+  color:white;
+}
+
+
+
+/* ========================= */
+/* FRIENDS MODAL (GLASS) */
+/* ========================= */
+
+.friends-modal{
+  position:fixed;
+  inset:0;
+
+  background:linear-gradient(
+    135deg,
+    rgba(0,0,0,.75),
+    rgba(30,30,30,.85)
+  );
+
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+/* ========================= */
+/* CAJA PRINCIPAL */
+/* ========================= */
+
+.friends-box{
+  width:800px;
+  height:370px;
+
+  border-radius:10px;
+  padding:30px;
+  position:relative;
+  overflow:visible;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+
+  border:1px solid rgba(255,255,255,0.25);
+
+  box-shadow:
+    0 8px 32px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+
+/* PANEL INTERNO DETRÁS DE LAS CARDS */
+/* ========================= */
+/* PANEL INTERNO */
+/* ========================= */
+
+.friends-panel{
+
+  position:relative;
+
+  border-radius:10px;
+  padding:25px;
+  margin-top:-3px;
+
+  background:rgba(255,255,255,0.06);
+
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+
+  border:1px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2);
+
+  overflow:hidden;
+}
+
+
+
+/* ========================= */
+/* FADE IZQUIERDA */
+/* ========================= */
+
+.friends-panel::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:180px;
+  height:100%;
+  pointer-events:none;
+  z-index:5;
+
+  background:linear-gradient(
+    to right,
+    rgba(97, 97, 97, 0.6),
+    rgba(216,216,216,0)
+  );
+}
+
+
+/* ========================= */
+/* FADE DERECHA */
+/* ========================= */
+
+.friends-panel::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:0;
+  width:120px;
+  height:100%;
+  pointer-events:none;
+  z-index:5;
+
+  background:linear-gradient(
+    to left,
+    rgba(97, 97, 97, 0.6),
+    rgba(216,216,216,0)
+  );
+}
+
+
+/* ========================= */
+/* TITULO */
+/* ========================= */
+
+.friends-header{
+  color:#e68aa9;
+  font-size:20px;
+  margin-bottom:25px;
+  font-weight:700;
+  letter-spacing:.5px;
+  text-align:center;
+}
+
+
+/* ========================= */
+/* BOTON CERRAR */
+/* ========================= */
+
+.friends-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+
+  width:27px;
+  height:27px;
+
+  border-radius:10%;
+  background:#535353f1;
+
+  display:grid;
+  place-items:center;
+
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+
+.friends-close:hover{
+  background:#bdbdbd;
+}
+
+
+
+
+/* CONTENEDOR DESLIZANTE */
+.friends-container{
+  display:flex;
+  gap:40px;
+  cursor:grab;
+  user-select:none;
+  transition:transform .1s;
+}
+
+/* ========================= */
+/* FRIEND CARD ULTRA PRO */
+/* ========================= */
+
+.friend-card{
+  width:200px;
+  height:270px;
+  border-radius:18px;
+
+  /* COLOR REAL (solo se verá en hover) */
+  background:linear-gradient(
+    180deg,
+    var(--card-color1,#5e5e5e),
+    var(--card-color2,#3f3f3f)
+  );
+
+  padding:16px;
+  flex-shrink:0;
+
+  /* TODO GRIS */
+  filter:grayscale(100%);
+  transition:all .45s ease;
+}
+
+/* FRAME INTERNO */
+.friend-frame{
+  width:100%;
+  height:100%;
+
+  /* IMPORTANTE 🔥
+     NO usar gris sólido */
+  background:rgba(0,0,0,.35);
+
+  border-radius:14px;
+  padding:12px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  overflow:hidden;
+
+  transition:all .45s ease;
+}
+
+/* IMAGEN */
+.friend-image{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:78%;
+  overflow:hidden;
+  border-radius:12px;
+}
+
+.friend-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  clip-path:polygon(0 0,100% 0,100% 65%,0 100%);
+  filter:grayscale(100%);
+  transition:all .45s ease;
+}
+
+/* CIRCULO XAT */
+.friend-xat{
+  position:absolute;
+  top:64%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:50px;
+  height:50px;
+  background:#f6f7ea;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:12px;
+  font-weight:700;
+  color:#303030;
+  box-shadow:0 8px 20px rgba(0,0,0,.4);
+}
+
+/* NOMBRE */
+.friend-name{
+  color:white;
+  font-weight:600;
+  font-size:14px;
+  margin-bottom:8px;
+  text-align:center;
+}
+
+/* ========================= */
+/* HOVER */
+/* ========================= */
+
+.friend-card:hover{
+  filter:grayscale(0%);
+  transform:translateY(-12px) scale(1.04);
+
+  box-shadow:
+    0 25px 50px rgba(0,0,0,.5),
+    0 0 25px var(--card-color1);
+}
+
+/* FOTO COLOR */
+.friend-card:hover .friend-image img{
+  filter:grayscale(0%);
+  transform:scale(1.08);
+}
+
+/* ========================= */
+/* EFECTO PCBACK PARA FRIEND */
+/* ========================= */
+
+.friends-container{
+  position:relative;
+  height:260px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  perspective:1200px;
+}
+
+/* ahora se posicionan como pcback */
+.friend-card{
+  position:absolute;
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%) scale(.6);
+  opacity:0;
+  z-index:0;
+
+  transition:
+    transform .6s ease,
+    opacity .6s ease,
+    filter .6s ease;
+}
+
+/* CARD ACTIVA */
+.friend-card.active{
+  transform:translate(-50%,-50%) scale(1);
+  opacity:1;
+  z-index:3;
+}
+
+/* IZQUIERDA */
+.friend-card.left{
+  transform:translate(calc(-50% - 240px), -50%) scale(.8);
+  opacity:.7;
+  z-index:2;
+}
+
+/* DERECHA */
+.friend-card.right{
+  transform:translate(calc(-50% + 240px), -50%) scale(.8);
+  opacity:.7;
+  z-index:2;
+}
+
+/* ========================= */
+/* ZOOM DINÁMICO FRIEND */
+/* ========================= */
+
+/* CARD CENTRAL */
+.friend-card.active{
+  transform:translate(-50%,-50%) scale(1.08);
+}
+
+/* LATERALES */
+.friend-card.left,
+.friend-card.right{
+  transform:
+    translate(calc(-50% - 240px), -50%)
+    scale(.85);
+}
+
+.friend-card.right{
+  transform:
+    translate(calc(-50% + 240px), -50%)
+    scale(.85);
+}
+
+/* ========================= */
+/* TOP MARRIED DUAL COLOR */
+/* ========================= */
+
+.married-top{
+  position:absolute;
+  top:-49px;
+  left:50%;
+  transform:translateX(-50%);
+
+  padding:14px 40px;
+  border-radius:6px;
+
+  background:linear-gradient(
+    to bottom,
+    #fad1de 0%,
+    #fad1de 50%,
+    #f0b3cc 50%,
+    #f0b3d1 100%
+  );
+
+  color:white;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-align:center;
+
+  box-shadow:0 15px 35px rgba(0, 0, 0, 0.089);
+  z-index: 199999;
+}
+
+/* TOP FRIEND DUAL COLOR */
+.friends-top{
+  position:absolute;
+  top:-26px;
+  left:50%;
+  transform:translateX(-50%);
+
+  padding:14px 45px;
+  border-radius:6px;
+
+  background:linear-gradient(
+    to bottom,
+    #8f8f8f 0%,
+    #8f8f8f 50%,
+    #585858 50%,
+    #585858 100%
+  );
+
+  color:white;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-align:center;
+
+  box-shadow:0 15px 35px rgba(0,0,0,.2);
+  z-index: 199999;
+}
+
+/* ========================= */
+/* GALLERY MODAL (GLASS) */
+/* ========================= */
+
+.gallery-modal{
+  position:fixed;
+  inset:0;
+
+  background:linear-gradient(
+    135deg,
+    rgba(0,0,0,.75),
+    rgba(30,30,30,.85)
+  );
+
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+
+/* ========================= */
+/* CAJA PRINCIPAL */
+/* ========================= */
+
+.gallery-box{
+  width:800px;
+  height:370px;
+
+  border-radius:10px;
+  padding:30px;
+  position:relative;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+
+  border:1px solid rgba(255,255,255,0.25);
+
+  box-shadow:
+    0 8px 32px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+
+
+/* ========================= */
+/* BOTÓN CERRAR */
+/* ========================= */
+
+.gallery-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+
+  width:27px;
+  height:27px;
+
+  border-radius:10%;
+  background:#535353f1;
+
+  display:grid;
+  place-items:center;
+
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+.gallery-close:hover{
+  background:#969696;
+}
+
+
+/* ========================= */
+/* TÍTULO */
+/* ========================= */
+
+.gallery-top{
+  position:absolute;
+  top:-27px;
+  left:50%;
+  transform:translateX(-50%);
+
+  padding:14px 43px;
+  border-radius:8px;
+
+  background:linear-gradient(
+    #8f8f8f 50%,
+    #585858 50%
+  );
+
+  color:white;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:1px;
+
+  box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
+
+
+/* ========================= */
+/* PANEL INTERNO */
+/* ========================= */
+
+.gallery-panel{
+
+  border-radius:10px;
+  padding:30px;
+  margin-top:-3px;
+
+  background:rgba(255,255,255,0.06);
+
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+
+  border:1px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2);
+
+  overflow:hidden;
+}
+
+/* CONTENEDOR */
+.gallery-container{
+  display:flex;
+  gap:40px;
+  perspective:1200px; /* 👈 profundidad 3D */
+}
+
+/* ========================= */
+/* CONTENEDOR GALERIA */
+/* ========================= */
+
+
+.gallery-card{
+  width:200px;
+  height:260px;
+  flex-shrink:0;
+  border-radius:10px;
+  overflow:hidden;              /* 👈 importante */
+  border:8px solid #d6d6d693;     /* 👈 borde blanco */
+  transition:.35s;
+  filter:grayscale(100%);
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+
+
+/* MARCO INTERNO (orden visual) */
+.gallery-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+
+/* HOVER */
+.gallery-card:hover{
+  transform:translateY(-10px) scale(1.05);
+  filter:grayscale(0%);
+  box-shadow:0 20px 40px rgba(0,0,0,.5);
+}
+
+
+.gallery-card{
+  width:200px;
+  height:260px;
+  flex-shrink:0;
+
+  border-radius:18px;
+  overflow:hidden;
+  border:8px solid #d6d6d693;
+
+  transition:
+    transform .45s ease,
+    filter .45s ease,
+    opacity .45s ease,
+    box-shadow .45s ease;
+
+  /* estado base */
+  transform:scale(.75);
+  opacity:.5;
+  filter:grayscale(100%) brightness(.6);
+}
+
+/* CARD CENTRO */
+.gallery-card.active{
+  transform:scale(1);
+  opacity:1;
+  filter:grayscale(0%);
+  z-index:3;
+
+  box-shadow:
+    0 25px 50px rgba(0,0,0,.6);
+}
+
+/* COSTADO */
+.gallery-card.side{
+  transform:scale(.85);
+  opacity:.7;
+  z-index:2;
+}
+
+/* RESTO */
+.gallery-card.hidden{
+  transform:scale(.6);
+  opacity:0;
+}
+
+
+
+
+/* ================= PROFILE MODAL ================= */
+
+.profile-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(4px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.profile-box{
+  width:700px;
+  background:#444444;
+  border-radius:10px;
+  padding:24px;
+  position:relative;
+  box-shadow:0 40px 80px rgba(0,0,0,.6);
+}
+
+.profile-top{
+  position:absolute;
+  top:-26px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:13px 35px;
+  border-radius:6px;
+
+  background:linear-gradient(
+    to bottom,
+    #8f8f8f 0%,
+    #8f8f8f 50%,
+    #585858 50%,
+    #585858 100%
+  );
+
+  color:white;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:1px;
+  z-index: 199999;
+}
+
+.profile-card{
+  background:#d3d3d3;
+  border-radius:10px;
+  display:flex;
+  overflow:hidden;
+  position:relative;
+}
+
+.profile-left{
+  width:55%;
+  padding:50px 80px;
+  display:flex;
+  flex-direction:column;
+}
+
+.profile-left h2{
+  color:#333;
+  font-size:30px;
+}
+
+.profile-id{
+  top:14px;
+  font-size:12px;
+  font-weight:800;
+  color:#777;
+  margin:6px 0 20px;
+}
+
+.profile-info{
+  color:#525252;
+  margin-bottom:6px;
+}
+
+.profile-info .flag{
+  width:20px;
+  height:auto;
+  margin-left:6px;
+  border-radius:3px;
+  box-shadow:0 0 6px rgba(0,0,0,.4);
+}
+.profile-text{
+  font-size:14px;
+  color:#222;
+  margin-top:20px;
+  max-width:350px;
+}
+
+.profile-right{
+  width:45%;
+  position:relative;
+}
+
+.profile-bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.85)),
+    url("https://xatimg.com/image/5hutBXDibzCD.jpg");
+  background-size:cover;
+  background-position:center;
+  clip-path:polygon(70% 0%,100% 0%,100% 100%,0% 100%);
+}
+
+.profile-avatar{
+  position:absolute;
+  right:28%;
+  top:50%;
+  transform:translate(50%,-50%);
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  background:#d8d8d8;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
+}
+
+.profile-avatar img{
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.profile-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+
+  width:27px;
+  height:27px;
+
+  border-radius:10%;
+  background:#535353f1;
+
+  display:grid;
+  place-items:center;
+
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+
+.profile-close:hover{
+  background:#bdbdbd;
+}
+
+
+/* ================================================= */
+/* ================== MODAL GIF ==================== */
+/* ================================================= */
+
+.gifm-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:20000;
+}
+
+/* ================================================= */
+/* CAJA PRINCIPAL */
+/* ================================================= */
+
+.gifm-pro-box{
+  width:1200px;
+  height:600px;
+  border-radius:10px;
+  background:#111;
+  padding:50px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 40px 80px rgba(0,0,0,.8);
+}
+
+/* ================================================= */
+/* HEADER */
+/* ================================================= */
+
+.gifm-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.gifm-header h1{
+  font-size:38px;
+  letter-spacing:3px;
+  color:white;
+}
+
+.gifm-header h1 span{
+  color:#999;
+}
+
+/* =========================
+   CERRAR MODAL
+========================= */
+
+.gifm-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+  width:27px;
+  height:27px;
+  border-radius:10%;
+  background:#535353f1;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+
+.gifm-close:hover{
+  background:#bdbdbd;
+}
+
+
+
+/* ================================================= */
+/* TABS */
+/* ================================================= */
+
+.gifm-tabs-pro{
+  display:flex;
+  gap:15px;
+}
+
+.gifm-pro-tab{
+  padding:10px 25px;
+  background:#1c1c1c;
+  border:1px solid #333;
+  color:#aaa;
+  cursor:pointer;
+  transition:.3s;
+  user-select:none;
+}
+
+.gifm-pro-tab.active,
+.gifm-pro-tab:hover{
+  background:#B3B3B3;
+  color:#000;
+}
+
+/* ================================================= */
+/* BODY */
+/* ================================================= */
+
+.gifm-body{
+  display:flex;
+  gap:40px;
+  margin-top:25px;
+  flex:1;
+  overflow:hidden;
+}
+
+/* ================================================= */
+/* GALERIA */
+/* ================================================= */
+
+.gifm-gallery{
+
+  flex:1;
+  min-width:0;
+
+  position:relative;
+
+  padding:25px;
+
+  border-radius:10px;
+
+  background:#0d0d0d;
+
+  border:1px solid #222;
+
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  scrollbar-width:none;
+}
+
+/* ocultar scroll */
+
+.gifm-gallery::-webkit-scrollbar{
+  display:none;
+}
+
+/* linea superior elegante */
+
+.gifm-gallery::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:20px;
+  right:20px;
+  height:1px;
+  background:rgba(255,255,255,.25);
+}
+
+/* ================================================= */
+/* GRID AUTOMATICO PARA GIF CARDS */
+/* ================================================= */
+
+.gifm-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fill,minmax(110px,1fr));
+
+  gap:25px;
+
+  justify-items:center;
+
+  align-content:start;
+
+  padding-bottom:40px;
+}
+
+/* ================================================= */
+/* CONTENIDO POR TAB */
+/* ================================================= */
+
+.gifm-content{
+  display:none;
+}
+
+.gifm-content.active{
+  display:grid;
+}
+
+/* ================================================= */
+/* PANEL PRECIOS */
+/* ================================================= */
+
+.gifm-prices{
+  width:260px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.15);
+  color:white;
+  flex-shrink:0;
+}
+
+.gifm-prices h3{
+  margin-bottom:25px;
+  font-weight:600;
+}
+
+.gifm-price-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+.gifm-price-item b{
+  color:white;
+}
+
+/* ================================================= */
+/* EFECTO SUAVE SCROLL */
+/* ================================================= */
+
+.gifm-gallery{
+  scroll-behavior:smooth;
+}
+
+/* ================================================= */
+/* FADE SUPERIOR / INFERIOR */
+/* ================================================= */
+
+.gifm-gallery::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:60px;
+  pointer-events:none;
+
+  background:linear-gradient(
+    to top,
+    #0d0d0d,
+    transparent
+  );
+}
+
+/* ================================================= */
+/* RESPONSIVE */
+/* ================================================= */
+
+@media(max-width:1300px){
+
+  .gifm-pro-box{
+    width:95%;
+    height:90%;
+  }
+
+}
+
+@media(max-width:900px){
+
+  .gifm-body{
+    flex-direction:column;
+  }
+
+  .gifm-prices{
+    width:100%;
+  }
+
+}
+
+/* ========================= */
+/* CARD */
+/* ========================= */
+
+.gifm-card{
+  width:100px;
+  height:140px;
+  border-radius:14px;
+  position:relative;
+  overflow:hidden;
+  flex-shrink:0;
+
+background:linear-gradient(
+  180deg,
+  var(--gif-light),
+  var(--gif-dark)
+);
+
+  border:6px solid var(--gif-light);
+
+  transform:scale(1);
+  opacity:1;
+
+  z-index:1;
+
+
+  transition:all .4s ease;
+}
+
+/* IMAGEN */
+
+.gifm-img{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  border-radius:8px;
+}
+
+.gifm-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:none;
+}
+
+/* ========================= */
+/* FONDO TRIANGULAR */
+/* ========================= */
+
+.gifm-triangle{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:78px;
+  border-radius:3px;
+background:linear-gradient(
+  180deg,
+  var(--gif-light),
+  var(--gif-dark)
+);
+
+  clip-path:polygon(
+    0 0,
+    1% 0,
+    40% 43%,
+    60% 45%,
+    100% 0,
+    100% 100%,
+    0 120%
+  );
+
+  transition:.4s ease;
+}
+
+/* ========================= */
+/* NUMERO */
+/* ========================= */
+
+.gifm-number{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:white;
+  display:grid;
+  place-items:center;
+  font-size:12px;
+  font-weight:700;
+}
+
+/* ========================= */
+/* TEXTO MODELO */
+/* ========================= */
+
+.gifm-model{
+  position:absolute;
+  bottom:10px;
+  width:100%;
+  text-align:center;
+  font-size:11px;
+  font-weight:700;
+  color:#fafafa;
+}
+
+.gifm-card:hover{
+  filter:grayscale(0%);
+  transform:translateY(-8px) scale(1.03);
+
+  border:6px solid var(--gif-light);
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.5),
+    0 0 20px var(--gif-light);
+}
+
+.gifm-card:hover .gifm-triangle{
+  background:linear-gradient(
+    180deg,
+    var(--gif-light),
+    var(--gif-dark)
+  );
+}
+
+.gifm-card:hover img{
+  filter:grayscale(0%);
+  transform:scale(1.08);
+  transition:.4s ease;
+}
+
+/* ========================= */
+/* MODAL FONDO */
+/* ========================= */
+
+.pcbackgif-modal-scope .pcbackgif-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:20000;
+}
+
+/* ========================= */
+/* CAJA PRINCIPAL PRO */
+/* ========================= */
+
+.pcbackgif-modal-scope .pcbackgif-pro-box{
+  width:1200px;
+  height:600px;
+  border-radius:10px;
+  background:#111;
+  padding:50px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 40px 80px rgba(0,0,0,.8);
+}
+
+/* HEADER */
+
+.pcbackgif-modal-scope .pcbackgif-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.pcbackgif-modal-scope .pcbackgif-header h1{
+  font-size:38px;
+  letter-spacing:3px;
+  color:white;
+}
+
+.pcbackgif-modal-scope .pcbackgif-header h1 span{
+  color:#999;
+}
+
+/* TABS */
+
+.pcbackgif-modal-scope .pcbackgif-tabs-pro{
+  display:flex;
+  gap:15px;
+}
+
+.pcbackgif-modal-scope .pcbackgif-pro-tab{
+  padding:10px 25px;
+  background:#1c1c1c;
+  border:1px solid #333;
+  color:#aaa;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.pcbackgif-modal-scope .pcbackgif-pro-tab.active,
+.pcbackgif-modal-scope .pcbackgif-pro-tab:hover{
+  background:#B3B3B3;
+  color:#000;
+}
+
+/* BODY */
+
+.pcbackgif-modal-scope .pcbackgif-body{
+  display:flex;
+  gap:40px;
+  margin-top:25px;
+  flex:1;
+  height:100%;
+  overflow:hidden;
+}
+
+/* GALERIA */
+
+.pcbackgif-modal-scope .pcbackgif-gallery{
+  flex:1;
+  min-width:0;
+  position:relative;
+  padding:25px;
+  border-radius:10px;
+  background:#0d0d0d;
+  border:1px solid #222;
+  overflow:hidden;
+}
+
+.pcbackgif-modal-scope .pcbackgif-gallery::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:20px;
+  right:20px;
+  height:1px;
+  background:rgba(255,255,255,.25);
+}
+
+/* =========================
+   PRECIOS FIJOS
+========================= */
+
+.pcbackgif-modal-scope .pcbackgif-prices{
+  width:260px;
+  height:200px;
+  flex-shrink:0;
+  position:relative;
+  margin-top:20px;
+}
+
+.pcbackgif-modal-scope .pcbackgif-prices::before{
+  content:"";
+  position:absolute;
+  top:-20px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+}
+
+.pcbackgif-modal-scope .pcbackgif-pro-content{
+  margin-left:-27px;
+  width:800px;
+  height:100px;
+  display:none;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.pcbackgif-modal-scope .pcbackgif-pro-content.active{
+  display:flex;
+}
+
+/* CARD */
+
+.pcbackgif-modal-scope .pcbackgif-card{
+  margin-top:10px;
+  width:480px;
+  height:340px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1),
+    opacity .4s ease;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  position:relative;
+}
+
+.pcbackgif-modal-scope .pcbackgif-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.pcbackgif-modal-scope .pcbackgif-card img{
+  width:100%;
+  height:85%;
+  object-fit:cover;
+}
+
+/* =========================================
+   FADE LATERAL SUAVE EN GALERÍA
+========================================= */
+
+.pcbackgif-modal-scope .pcbackgif-slider-wrapper{
+  position:relative;
+}
+
+.pcbackgif-modal-scope .pcbackgif-slider-wrapper::before,
+.pcbackgif-modal-scope .pcbackgif-slider-wrapper::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:370px;
+  height:100%;
+  pointer-events:none;
+  z-index:10;
+}
+
+.pcbackgif-modal-scope .pcbackgif-slider-wrapper::before{
+  left:0;
+  background:linear-gradient(
+    to right,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+.pcbackgif-modal-scope .pcbackgif-slider-wrapper::after{
+  right:0;
+  background:linear-gradient(
+    to left,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+/* NUMERO */
+
+.pcbackgif-modal-scope .pcbackgif-pro-number{
+  position:absolute;
+  top:-1px;
+  left:15px;
+  width:30px;
+  height:50px;
+  background:white;
+  color:black;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+}
+
+/* COLORES */
+
+.pcbackgif-modal-scope .pcbackgif-colors{
+  height:15%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+.pcbackgif-modal-scope .pcbackgif-colors span{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  border:2px solid #000;
+}
+
+/* PANEL PRECIOS */
+
+.pcbackgif-modal-scope .pcbackgif-prices{
+  width:260px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.15);
+  color:white;
+}
+
+.pcbackgif-modal-scope .pcbackgif-prices h3{
+  margin-bottom:25px;
+  font-weight:600;
+}
+
+.pcbackgif-modal-scope .pcbackgif-price-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+.pcbackgif-modal-scope .pcbackgif-price-item b{
+  color:white;
+}
+
+/* ========================= */
+/* SLIDER */
+/* ========================= */
+
+.pcbackgif-modal-scope .pcbackgif-slider-wrapper{
+  width:100%;
+  overflow:hidden;
+}
+
+.pcbackgif-modal-scope .pcbackgif-slider-track{
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  white-space:nowrap;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  perspective:1200px;
+}
+
+.pcbackgif-modal-scope .pcbackgif-slider-track::-webkit-scrollbar{
+  display:none;
+}
+
+/* CARDS */
+
+.pcbackgif-modal-scope .pcbackgif-card{
+  min-width:260px;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.pcbackgif-modal-scope .pcbackgif-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+  width:27px;
+  height:27px;
+  border-radius:10%;
+  background:#535353f1;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+
+.pcbackgif-modal-scope .pcbackgif-close:hover{
+  background:#bdbdbd;
+}
+
+/* ========================= */
+/* MODAL VISUALIZADOR */
+/* ========================= */
+
+.pcbackgif-modal-scope .pcview-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(6px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:30000;
+  animation:fadeIn .25s ease;
+}
+
+/* CAJA */
+
+.pcbackgif-modal-scope .pcview-box{
+  position:relative;
+  padding:8px;
+  border-radius:28px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(25px);
+  border:1px solid rgba(255,255,255,0.25);
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.15),
+    0 30px 80px rgba(0,0,0,.7);
+  display:inline-block;
+}
+
+/* IMAGEN */
+
+.pcbackgif-modal-scope .pcview-img-wrapper{
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.pcbackgif-modal-scope .pcview-img-wrapper img{
+  display:block;
+  max-width:90vw;
+  max-height:85vh;
+  width:auto;
+  height:auto;
+  border-radius:22px;
+  object-fit:unset;
+}
+
+/* CERRAR */
+
+.pcbackgif-modal-scope .pcview-close{
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:5;
+  transition:.3s ease;
+}
+
+.pcbackgif-modal-scope .pcview-close:hover{
+  background:#ff4d4d;
+  color:white;
+}
+
+/* ANIMACIONES */
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+
+
+/* ========================= */
+/* MODAL PSTYLE */
+/* ========================= */
+
+.pstylegif-modal-scope .pstylegif-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:20000;
+}
+
+/* ========================= */
+/* CAJA PRINCIPAL PRO */
+/* ========================= */
+
+.pstylegif-modal-scope .pstylegif-pro-box{
+  width:1200px;
+  height:600px;
+  border-radius:10px;
+  background:#111;
+  padding:50px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 40px 80px rgba(0,0,0,.8);
+}
+
+/* HEADER */
+
+.pstylegif-modal-scope .pstylegif-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.pstylegif-modal-scope .pstylegif-header h1{
+  font-size:38px;
+  letter-spacing:3px;
+  color:white;
+}
+
+.pstylegif-modal-scope .pstylegif-header h1 span{
+  color:#999;
+}
+
+/* TABS */
+
+.pstylegif-modal-scope .pstylegif-tabs-pro{
+  display:flex;
+  gap:15px;
+}
+
+.pstylegif-modal-scope .pstylegif-pro-tab{
+  padding:10px 25px;
+  background:#1c1c1c;
+  border:1px solid #333;
+  color:#aaa;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.pstylegif-modal-scope .pstylegif-pro-tab.active,
+.pstylegif-modal-scope .pstylegif-pro-tab:hover{
+  background:#B3B3B3;
+  color:#000;
+}
+
+/* BODY */
+
+.pstylegif-modal-scope .pstylegif-body{
+  display:flex;
+  gap:40px;
+  margin-top:25px;
+  flex:1;
+  height:100%;
+  overflow:hidden;
+}
+
+/* GALERIA */
+
+.pstylegif-modal-scope .pstylegif-gallery{
+
+  flex:1;
+  min-width:0;
+
+  position:relative;
+
+  padding:25px;
+
+  border-radius:10px;
+
+  background:#0d0d0d;
+
+  border:1px solid #222;
+
+  overflow:hidden;
+
+}
+
+.pstylegif-modal-scope .pstylegif-gallery::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:20px;
+  right:20px;
+
+  height:1px;
+
+  background:rgba(255,255,255,.25);
+
+}
+
+/* =========================
+   PRECIOS FIJOS
+========================= */
+
+.pstylegif-modal-scope .pstylegif-prices{
+  width:260px;
+  height:200px;
+  flex-shrink:0;
+  position:relative;
+  margin-top:20px;
+}
+
+.pstylegif-modal-scope .pstylegif-prices::before{
+  content:"";
+  position:absolute;
+  top:-20px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+}
+
+.pstylegif-modal-scope .pstylegif-pro-content{
+  margin-left:-27px;
+  width:800px;
+  height:100px;
+  display:none;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.pstylegif-modal-scope .pstylegif-pro-content.active{
+  display:flex;
+}
+
+/* CARD */
+
+.pstylegif-modal-scope .pstylegif-card{
+  margin-top:10px;
+  width:480px;
+  height:340px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1),
+    opacity .4s ease;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  position:relative;
+}
+
+.pstylegif-modal-scope .pstylegif-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.pstylegif-modal-scope .pstylegif-card img{
+  width:100%;
+  height:85%;
+  object-fit:cover;
+}
+
+/* =========================================
+   FADE LATERAL SUAVE EN GALERÍA
+========================================= */
+
+.pstylegif-modal-scope .pstylegif-slider-wrapper{
+  position:relative;
+}
+
+.pstylegif-modal-scope .pstylegif-slider-wrapper::before,
+.pstylegif-modal-scope .pstylegif-slider-wrapper::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:370px;
+  height:100%;
+  pointer-events:none;
+  z-index:10;
+}
+
+.pstylegif-modal-scope .pstylegif-slider-wrapper::before{
+  left:0;
+  background:linear-gradient(
+    to right,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+.pstylegif-modal-scope .pstylegif-slider-wrapper::after{
+  right:0;
+  background:linear-gradient(
+    to left,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+/* NUMERO */
+
+.pstylegif-modal-scope .pstylegif-pro-number{
+  position:absolute;
+  top:-1px;
+  left:15px;
+  width:30px;
+  height:50px;
+  background:white;
+  color:black;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+}
+
+/* COLORES */
+
+.pstylegif-modal-scope .pstylegif-colors{
+  height:15%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+.pstylegif-modal-scope .pstylegif-colors span{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  border:2px solid #000;
+}
+
+/* PANEL PRECIOS */
+
+.pstylegif-modal-scope .pstylegif-prices{
+  width:260px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.15);
+  color:white;
+}
+
+.pstylegif-modal-scope .pstylegif-prices h3{
+  margin-bottom:25px;
+  font-weight:600;
+}
+
+.pstylegif-modal-scope .pstylegif-price-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+.pstylegif-modal-scope .pstylegif-price-item b{
+  color:white;
+}
+
+/* ========================= */
+/* SLIDER */
+/* ========================= */
+
+.pstylegif-modal-scope .pstylegif-slider-wrapper{
+  width:100%;
+  overflow:hidden;
+}
+
+.pstylegif-modal-scope .pstylegif-slider-track{
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  white-space:nowrap;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  perspective:1200px;
+}
+
+.pstylegif-modal-scope .pstylegif-slider-track::-webkit-scrollbar{
+  display:none;
+}
+
+/* CARDS */
+
+.pstylegif-modal-scope .pstylegif-card{
+  min-width:260px;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.pstylegif-modal-scope .pstylegif-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+
+  width:27px;
+  height:27px;
+
+  border-radius:10%;
+  background:#535353f1;
+
+  display:grid;
+  place-items:center;
+
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+
+.pstylegif-modal-scope .pstylegif-close:hover{
+  background:#bdbdbd;
+}
+
+/* ========================= */
+/* VISOR */
+/* ========================= */
+
+.pstylegif-modal-scope .pstylegifview-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(6px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:30000;
+}
+
+.pstylegif-modal-scope .pstylegifview-box{
+  position:relative;
+  padding:8px;
+  border-radius:28px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(25px);
+  border:1px solid rgba(255,255,255,0.25);
+}
+
+.pstylegif-modal-scope .pstylegif-img-wrapper{
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.pstylegif-modal-scope .pstylegif-img-wrapper img{
+  display:block;
+  max-width:90vw;
+  max-height:85vh;
+}
+
+.pstylegif-modal-scope .pstylegif-view-close{
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.pstylegif-modal-scope .pstylegif-view-close:hover{
+  background:#ff4d4d;
+  color:white;
+}
+
+/* ========================= */
+/* MODAL FONDO */
+/* ========================= */
+
+.fpcbackgif-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:20000;
+}
+
+/* ========================= */
+/* CAJA PRINCIPAL PRO */
+/* ========================= */
+
+.fpcback-modal-scope .fpcbackgif-pro-box{
+  width:1200px;
+  height:600px;
+  border-radius:10px;
+  background:#111;
+  padding:50px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 40px 80px rgba(0,0,0,.8);
+}
+
+/* HEADER */
+
+.fpcback-modal-scope .fpcbackgif-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.fpcback-modal-scope .fpcbackgif-header h1{
+  font-size:38px;
+  letter-spacing:3px;
+  color:white;
+}
+
+.fpcback-modal-scope .fpcbackgif-header h1 span{
+  color:#999;
+}
+
+/* TABS */
+
+.fpcback-modal-scope .fpcbackgif-tabs-pro{
+  display:flex;
+  gap:15px;
+}
+
+.fpcback-modal-scope .fpcbackgif-pro-tab{
+  padding:10px 25px;
+  background:#1c1c1c;
+  border:1px solid #333;
+  color:#aaa;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.fpcback-modal-scope .fpcbackgif-pro-tab.active,
+.fpcback-modal-scope .fpcbackgif-pro-tab:hover{
+  background:#B3B3B3;
+  color:#000;
+}
+
+/* BODY */
+
+.fpcback-modal-scope .fpcbackgif-body{
+  display:flex;
+  gap:40px;
+  margin-top:25px;
+  flex:1;
+  height:100%;
+  overflow:hidden;
+}
+
+/* GALERIA */
+
+.fpcback-modal-scope .fpcbackgif-gallery{
+
+  flex:1;
+  min-width:0;
+
+  position:relative;
+
+  padding:25px;
+
+  border-radius:10px;
+
+  background:#0d0d0d;
+
+  border:1px solid #222;
+
+  overflow:hidden;
+
+}
+
+/* linea superior elegante */
+
+.fpcback-modal-scope .fpcbackgif-gallery::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:20px;
+  right:20px;
+
+  height:1px;
+
+  background:rgba(255,255,255,.25);
+
+}
+
+/* =========================
+   PRECIOS FIJOS
+========================= */
+
+.fpcback-modal-scope .fpcbackgif-prices{
+  width:260px;
+  height:200px;
+  flex-shrink:0;
+  position:relative;
+  margin-top:20px;
+}
+
+/* linea superior precios */
+
+.fpcback-modal-scope .fpcbackgif-prices::before{
+  content:"";
+  position:absolute;
+  top:-20px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+}
+
+.fpcback-modal-scope .fpcbackgif-pro-content{
+  margin-left:-27px;
+  width:800px;
+  height:100px;
+  display:none;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.fpcback-modal-scope .fpcbackgif-pro-content.active{
+  display:flex;
+}
+
+/* CARD */
+
+.fpcback-modal-scope .fpcbackgif-card{
+  margin-top:10px;
+  width:480px;
+  height:340px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1),
+    opacity .4s ease;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  position:relative;
+}
+
+.fpcback-modal-scope .fpcbackgif-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.fpcback-modal-scope .fpcbackgif-card img{
+  width:100%;
+  height:85%;
+  object-fit:cover;
+}
+
+/* =========================================
+   FADE LATERAL SUAVE EN GALERÍA
+========================================= */
+
+.fpcback-modal-scope .fpcbackgif-slider-wrapper{
+  position:relative;
+}
+
+.fpcback-modal-scope .fpcbackgif-slider-wrapper::before,
+.fpcback-modal-scope .fpcbackgif-slider-wrapper::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:370px;
+  height:100%;
+  pointer-events:none;
+  z-index:10;
+}
+
+.fpcback-modal-scope .fpcbackgif-slider-wrapper::before{
+  left:0;
+  background:linear-gradient(
+    to right,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+.fpcback-modal-scope .fpcbackgif-slider-wrapper::after{
+  right:0;
+  background:linear-gradient(
+    to left,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+/* NUMERO */
+
+.fpcback-modal-scope .fpcbackgif-pro-number{
+  position:absolute;
+  top:-1px;
+  left:15px;
+  width:30px;
+  height:50px;
+  background:white;
+  color:black;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+}
+
+/* COLORES */
+
+.fpcback-modal-scope .fpcbackgif-colors{
+  height:15%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+.fpcback-modal-scope .fpcbackgif-colors span{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  border:2px solid #000;
+}
+
+/* PANEL PRECIOS */
+
+.fpcback-modal-scope .fpcbackgif-prices{
+  width:260px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.15);
+  color:white;
+}
+
+.fpcback-modal-scope .fpcbackgif-prices h3{
+  margin-bottom:25px;
+  font-weight:600;
+}
+
+.fpcback-modal-scope .fpcbackgif-price-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+.fpcback-modal-scope .fpcbackgif-price-item b{
+  color:white;
+}
+
+/* ========================= */
+/* SLIDER */
+/* ========================= */
+
+.fpcback-modal-scope .fpcbackgif-slider-wrapper{
+
+  width:100%;
+  overflow:hidden;
+
+}
+
+.fpcback-modal-scope .fpcbackgif-slider-track{
+
+  overflow-x:auto;
+  overflow-y:hidden;
+
+  scroll-behavior:smooth;
+
+  white-space:nowrap;
+
+  scrollbar-width:none;
+
+  -ms-overflow-style:none;
+  perspective:1200px;
+}
+
+.fpcback-modal-scope .fpcbackgif-slider-track::-webkit-scrollbar{
+  display:none;
+}
+
+.fpcback-modal-scope .fpcbackgif-card{
+  min-width:260px;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.fpcback-modal-scope .fpcbackgif-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+
+  width:27px;
+  height:27px;
+
+  border-radius:10%;
+  background:#535353f1;
+
+  display:grid;
+  place-items:center;
+
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+
+.fpcback-modal-scope .fpcbackgif-close:hover{
+  background:#bdbdbd;
+}
+
+/* ========================= */
+/* MODAL VISUALIZADOR */
+/* ========================= */
+
+.fpcback-modal-scope .fpcview-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(6px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:30000;
+  animation:fadeIn .25s ease;
+}
+
+/* ========================= */
+/* CAJA PRINCIPAL */
+/* ========================= */
+
+.fpcback-modal-scope .fpcview-box{
+  position:relative;
+
+  padding:8px;
+  border-radius:28px;
+
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(25px);
+
+  border:1px solid rgba(255,255,255,0.25);
+
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.15),
+    0 30px 80px rgba(0,0,0,.7);
+
+  display:inline-block;
+}
+
+/* ========================= */
+/* WRAPPER IMAGEN */
+/* ========================= */
+
+.fpcback-modal-scope .fpcview-img-wrapper{
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.fpcback-modal-scope .fpcview-img-wrapper img{
+  display:block;
+  max-width:90vw;
+  max-height:85vh;
+  width:auto;
+  height:auto;
+  border-radius:22px;
+
+  object-fit:unset;
+}
+
+/* BOTÓN CERRAR */
+
+.fpcback-modal-scope .fpcview-close{
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:5;
+  transition:.3s ease;
+}
+
+.fpcback-modal-scope .fpcview-close:hover{
+  background:#ff4d4d;
+  color:white;
+}
+
+/* ANIMACIONES */
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* ========================= */
+/* MODAL FONDO */
+/* ========================= */
+
+.fpstylegif-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:20000;
+}
+
+/* ========================= */
+/* CAJA PRINCIPAL PRO */
+/* ========================= */
+
+.fpstyle .fpstylegif-pro-box{
+  width:1200px;
+  height:600px;
+  border-radius:10px;
+  background:#111;
+  padding:50px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 40px 80px rgba(0,0,0,.8);
+}
+
+/* HEADER */
+
+.fpstyle .fpstylegif-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.fpstyle .fpstylegif-header h1{
+  font-size:38px;
+  letter-spacing:3px;
+  color:white;
+}
+
+.fpstyle .fpstylegif-header h1 span{
+  color:#999;
+}
+
+/* TABS */
+
+.fpstyle .fpstylegif-tabs-pro{
+  display:flex;
+  gap:15px;
+}
+
+.fpstyle .fpstylegif-pro-tab{
+  padding:10px 25px;
+  background:#1c1c1c;
+  border:1px solid #333;
+  color:#aaa;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.fpstyle .fpstylegif-pro-tab.active,
+.fpstyle .fpstylegif-pro-tab:hover{
+  background:#B3B3B3;
+  color:#000;
+}
+
+/* BODY */
+
+.fpstyle .fpstylegif-body{
+  display:flex;
+  gap:40px;
+  margin-top:25px;
+  flex:1;
+  height:100%;
+  overflow:hidden;
+}
+
+/* GALERIA */
+
+.fpstyle .fpstylegif-gallery{
+  flex:1;
+  min-width:0;
+  position:relative;
+  padding:25px;
+  border-radius:10px;
+  background:#0d0d0d;
+  border:1px solid #222;
+  overflow:hidden;
+}
+
+/* linea superior elegante */
+
+.fpstyle .fpstylegif-gallery::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:20px;
+  right:20px;
+  height:1px;
+  background:rgba(255,255,255,.25);
+}
+
+/* =========================
+   PRECIOS FIJOS
+========================= */
+
+.fpstyle .fpstylegif-prices{
+  width:260px;
+  height:200px;
+  flex-shrink:0;
+  position:relative;
+  margin-top:20px;
+}
+
+/* linea superior precios */
+
+.fpstyle .fpstylegif-prices::before{
+  content:"";
+  position:absolute;
+  top:-20px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+}
+
+.fpstyle .fpstylegif-pro-content{
+  margin-left:-27px;
+  width:800px;
+  height:100px;
+  display:none;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.fpstyle .fpstylegif-pro-content.active{
+  display:flex;
+}
+
+/* CARD */
+
+.fpstyle .fpstylegif-card{
+  margin-top:10px;
+  width:480px;
+  height:340px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1),
+    opacity .4s ease;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  position:relative;
+}
+
+.fpstyle .fpstylegif-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.fpstyle .fpstylegif-card img{
+  width:100%;
+  height:85%;
+  object-fit:cover;
+}
+
+/* =========================================
+   FADE LATERAL SUAVE EN GALERÍA
+========================================= */
+
+.fpstyle .fpstylegif-slider-wrapper{
+  position:relative;
+}
+
+/* máscara real */
+
+.fpstyle .fpstylegif-slider-wrapper::before,
+.fpstyle .fpstylegif-slider-wrapper::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:370px;
+  height:100%;
+  pointer-events:none;
+  z-index:10;
+}
+
+/* lado izquierdo */
+
+.fpstyle .fpstylegif-slider-wrapper::before{
+  left:0;
+  background:linear-gradient(
+    to right,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+/* lado derecho */
+
+.fpstyle .fpstylegif-slider-wrapper::after{
+  right:0;
+  background:linear-gradient(
+    to left,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+/* NUMERO */
+
+.fpstyle .fpstylegif-pro-number{
+  position:absolute;
+  top:-1px;
+  left:15px;
+  width:30px;
+  height:50px;
+  background:white;
+  color:black;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+}
+
+/* COLORES */
+
+.fpstyle .fpstylegif-colors{
+  height:15%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+.fpstyle .fpstylegif-colors span{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  border:2px solid #000;
+}
+
+/* PANEL PRECIOS */
+
+.fpstyle .fpstylegif-prices{
+  width:260px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.15);
+  color:white;
+}
+
+.fpstyle .fpstylegif-prices h3{
+  margin-bottom:25px;
+  font-weight:600;
+}
+
+.fpstyle .fpstylegif-price-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+.fpstyle .fpstylegif-price-item b{
+  color:white;
+}
+
+/* ========================= */
+/* SLIDER */
+/* ========================= */
+
+.fpstyle .fpstylegif-slider-wrapper{
+  width:100%;
+  overflow:hidden;
+}
+
+/* =========================
+   SLIDER TRACK (SCROLL OCULTO)
+========================= */
+
+.fpstyle .fpstylegif-slider-track{
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  white-space:nowrap;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  perspective:1200px;
+}
+
+.fpstyle .fpstylegif-slider-track::-webkit-scrollbar{
+  display:none;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.fpstyle .fpstylegif-card{
+  min-width:260px;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.fpstyle .fpstylegif-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+  width:27px;
+  height:27px;
+  border-radius:10%;
+  background:#535353f1;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+
+.fpstyle .fpstylegif-close:hover{
+  background:#bdbdbd;
+}
+
+/* ========================= */
+/* VISOR */
+/* ========================= */
+
+.fpstyle .fpstylegif-view-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(6px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:30000;
+}
+
+.fpstyle .fpstylegifview-box{
+  position:relative;
+  padding:8px;
+  border-radius:28px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(25px);
+  border:1px solid rgba(255,255,255,0.25);
+}
+
+.fpstyle .fpstylegif-img-wrapper{
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.fpstyle .fpstylegif-img-wrapper img{
+  display:block;
+  max-width:90vw;
+  max-height:85vh;
+}
+
+.fpstyle .fpstylegif-view-close{
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.fpstyle .fpstylegif-view-close:hover{
+  background:#ff4d4d;
+  color:white;
+}
+
+
+/* ========================= */
+/* MODAL FONDO */
+/* ========================= */
+
+.banned-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:20000;
+}
+/* ========================= */
+/* CAJA PRINCIPAL PRO */
+/* ========================= */
+
+.banned .banned-pro-box{
+  width:1200px;
+  height:600px;
+  border-radius:10px;
+  background:#111;
+  padding:50px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 40px 80px rgba(0,0,0,.8);
+}
+
+/* HEADER */
+
+.banned .banned-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.banned .banned-header h1{
+  font-size:38px;
+  letter-spacing:3px;
+  color:white;
+}
+
+.banned .banned-header h1 span{
+  color:#999;
+}
+
+/* TABS */
+
+.banned .banned-tabs-pro{
+  display:flex;
+  gap:15px;
+}
+
+.banned .banned-pro-tab{
+  padding:10px 25px;
+  background:#1c1c1c;
+  border:1px solid #333;
+  color:#aaa;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.banned .banned-pro-tab.active,
+.banned .banned-pro-tab:hover{
+  background:#B3B3B3;
+  color:#000;
+}
+
+/* BODY */
+
+.banned .banned-body{
+  display:flex;
+  gap:40px;
+  margin-top:25px;
+  flex:1;
+  height:100%;
+  overflow:hidden;
+}
+
+/* GALERIA */
+
+.banned .banned-gallery{
+  flex:1;
+  min-width:0;
+  position:relative;
+  padding:25px;
+  border-radius:10px;
+  background:#0d0d0d;
+  border:1px solid #222;
+  overflow:hidden;
+}
+
+/* linea superior elegante */
+
+.banned .banned-gallery::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:20px;
+  right:20px;
+  height:1px;
+  background:rgba(255,255,255,.25);
+}
+
+/* =========================
+   PRECIOS FIJOS
+========================= */
+
+.banned .banned-prices{
+  width:260px;
+  height:200px;
+  flex-shrink:0;
+  position:relative;
+  margin-top:20px;
+}
+
+.banned .banned-prices::before{
+  content:"";
+  position:absolute;
+  top:-20px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+}
+
+.banned .banned-pro-content{
+  margin-left:-27px;
+  width:800px;
+  height:100px;
+  display:none;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.banned .banned-pro-content.active{
+  display:flex;
+}
+
+/* CARD */
+
+.banned .banned-card{
+  margin-top:10px;
+  width:480px;
+  height:340px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1),
+    opacity .4s ease;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  position:relative;
+}
+
+.banned .banned-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.banned .banned-card img{
+  width:100%;
+  height:85%;
+  object-fit:cover;
+}
+
+/* =========================================
+   FADE LATERAL SUAVE EN GALERÍA
+========================================= */
+
+.banned .banned-slider-wrapper{
+  position:relative;
+}
+
+.banned .banned-slider-wrapper::before,
+.banned .banned-slider-wrapper::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:370px;
+  height:100%;
+  pointer-events:none;
+  z-index:10;
+}
+
+.banned .banned-slider-wrapper::before{
+  left:0;
+  background:linear-gradient(
+    to right,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+.banned .banned-slider-wrapper::after{
+  right:0;
+  background:linear-gradient(
+    to left,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+/* NUMERO */
+
+.banned .banned-pro-number{
+  position:absolute;
+  top:-1px;
+  left:15px;
+  width:30px;
+  height:50px;
+  background:white;
+  color:black;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+}
+
+/* COLORES */
+
+.banned .banned-colors{
+  height:15%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+.banned .banned-colors span{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  border:2px solid #000;
+}
+
+/* PANEL PRECIOS */
+
+.banned .banned-prices{
+  width:260px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.15);
+  color:white;
+}
+
+.banned .banned-prices h3{
+  margin-bottom:25px;
+  font-weight:600;
+}
+
+.banned .banned-price-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+.banned .banned-price-item b{
+  color:white;
+}
+
+/* ========================= */
+/* SLIDER */
+/* ========================= */
+
+.banned .banned-slider-wrapper{
+  width:100%;
+  overflow:hidden;
+}
+
+.banned .banned-slider-track{
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  white-space:nowrap;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  perspective:1200px;
+}
+
+.banned .banned-slider-track::-webkit-scrollbar{
+  display:none;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.banned .banned-card{
+  min-width:260px;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.banned .banned-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+  width:27px;
+  height:27px;
+  border-radius:10%;
+  background:#535353f1;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+
+.banned .banned-close:hover{
+  background:#bdbdbd;
+}
+
+/* ========================= */
+/* VISOR */
+/* ========================= */
+
+.bannedview-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(6px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:30000;
+}
+
+.banned .bannedview-box{
+  position:relative;
+  padding:8px;
+  border-radius:28px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(25px);
+  border:1px solid rgba(255,255,255,0.25);
+}
+
+.banned .banned-img-wrapper{
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.banned .banned-img-wrapper img{
+  display:block;
+  max-width:90vw;
+  max-height:85vh;
+}
+
+.banned .banned-view-close{
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.banned .banned-view-close:hover{
+  background:#ff4d4d;
+  color:white;
+}
+
+/* ========================= */
+/* MODAL FONDO */
+/* ========================= */
+
+.modal-sala-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:20000;
+}
+
+/* ========================= */
+/* CAJA PRINCIPAL PRO */
+/* ========================= */
+
+.modal-sala-pro-box{
+  width:1200px;
+  height:600px;
+  border-radius:10px;
+  background:#111;
+  padding:50px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 40px 80px rgba(0,0,0,.8);
+}
+
+/* HEADER */
+
+.modal-sala-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.modal-sala-header h1{
+  font-size:38px;
+  letter-spacing:3px;
+  color:white;
+}
+
+.modal-sala-header h1 span{
+  color:#999;
+}
+
+/* TABS */
+
+.modal-sala-tabs-pro{
+  display:flex;
+  gap:15px;
+}
+
+.modal-sala-pro-tab{
+  padding:10px 25px;
+  background:#1c1c1c;
+  border:1px solid #333;
+  color:#aaa;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.modal-sala-pro-tab.active,
+.modal-sala-pro-tab:hover{
+  background:#B3B3B3;
+  color:#000;
+}
+
+/* BODY */
+
+.modal-sala-body{
+  display:flex;
+  gap:40px;
+  margin-top:25px;
+  flex:1;
+  height:100%;
+  overflow:hidden;
+}
+
+/* GALERIA */
+
+.modal-sala-gallery{
+
+  flex:1;
+  min-width:0;
+
+  position:relative;
+
+  padding:25px;
+
+  border-radius:10px;
+
+  background:#0d0d0d;
+
+  border:1px solid #222;
+
+  overflow:hidden;
+
+}
+
+/* linea superior elegante */
+
+.modal-sala-gallery::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:20px;
+  right:20px;
+
+  height:1px;
+
+  background:rgba(255,255,255,.25);
+
+}
+
+/* =========================
+   PRECIOS FIJOS
+========================= */
+
+.modal-sala-prices{
+  width:260px;
+  height:200px;
+  flex-shrink:0;
+  position:relative;
+  margin-top:20px;
+}
+
+/* linea superior precios */
+
+.modal-sala-prices::before{
+  content:"";
+  position:absolute;
+  top:-20px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+}
+
+.modal-sala-pro-content{
+  margin-left:-27px;
+  width:800px;
+  height:100px;
+  display:none;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.modal-sala-pro-content.active{
+  display:flex;
+}
+
+/* CARD */
+
+.modal-sala-card{
+  margin-top:10px;
+  width:480px;
+  height:340px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1),
+    opacity .4s ease;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  position:relative;
+}
+
+.modal-sala-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.modal-sala-card img{
+  width:100%;
+  height:85%;
+  object-fit:cover;
+}
+
+/* =========================================
+   FADE LATERAL SUAVE EN GALERÍA
+========================================= */
+
+.modal-sala-slider-wrapper{
+  position:relative;
+}
+
+/* máscara real */
+
+.modal-sala-slider-wrapper::before,
+.modal-sala-slider-wrapper::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:370px;
+  height:100%;
+  pointer-events:none;
+  z-index:10;
+}
+
+/* lado izquierdo */
+
+.modal-sala-slider-wrapper::before{
+  left:0;
+  background:linear-gradient(
+    to right,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+/* lado derecho */
+
+.modal-sala-slider-wrapper::after{
+  right:0;
+  background:linear-gradient(
+    to left,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+/* NUMERO */
+
+.modal-sala-card-number{
+  position:absolute;
+  top:-1px;
+  left:15px;
+  width:30px;
+  height:50px;
+  background:white;
+  color:black;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+}
+
+.modal-sala-card-colors{
+  height:15%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+.modal-sala-card-colors span{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  border:2px solid #000;
+}
+
+/* PANEL PRECIOS */
+
+.modal-sala-prices{
+  width:260px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.15);
+  color:white;
+}
+
+.modal-sala-prices h3{
+  margin-bottom:25px;
+  font-weight:600;
+}
+
+.modal-sala-price-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+.modal-sala-price-item b{
+  color:white;
+}
+
+/* ========================= */
+/* SLIDER */
+/* ========================= */
+
+.modal-sala-slider-wrapper{
+
+  width:100%;
+  overflow:hidden;
+
+}
+
+/* =========================
+   SLIDER TRACK (SCROLL OCULTO)
+========================= */
+
+.modal-sala-slider-track{
+
+  overflow-x:auto;
+  overflow-y:hidden;
+
+  scroll-behavior:smooth;
+
+  white-space:nowrap;
+
+  scrollbar-width:none;
+
+  -ms-overflow-style:none;
+
+  perspective:1200px;
+}
+
+.modal-sala-slider-track::-webkit-scrollbar{
+  display:none;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.modal-sala-card{
+  min-width:260px;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.modal-sala-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+
+  width:27px;
+  height:27px;
+
+  border-radius:10%;
+  background:#535353f1;
+
+  display:grid;
+  place-items:center;
+
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+
+.modal-sala-close:hover{
+  background:#bdbdbd;
+}
+
+/* ========================= */
+/* MODAL VISUALIZADOR */
+/* ========================= */
+
+.modal-sala-view-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(6px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:30000;
+  animation:fadeIn .25s ease;
+}
+
+/* ========================= */
+/* CAJA PRINCIPAL */
+/* ========================= */
+
+.modal-sala-view-box{
+  position:relative;
+
+  padding:20px;
+  border-radius:28px;
+
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(25px);
+
+  border:1px solid rgba(255,255,255,0.25);
+
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.15),
+    0 30px 80px rgba(0,0,0,.7);
+}
+
+/* WRAPPER DOBLE */
+
+.modal-sala-view-dual-wrapper{
+  display:flex;
+  gap:25px;
+}
+
+/* LADOS */
+
+.modal-sala-view-side{
+  text-align:center;
+}
+
+.modal-sala-view-label{
+  margin-bottom:10px;
+  color:white;
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+/* IMAGEN */
+
+.modal-sala-view-img-wrapper{
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.modal-sala-view-img-wrapper img{
+  display:block;
+  max-width:40vw;
+  max-height:80vh;
+  border-radius:22px;
+}
+
+/* BOTÓN CERRAR */
+
+.modal-sala-view-close{
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:5;
+  transition:.3s ease;
+}
+
+.modal-sala-view-close:hover{
+  background:#ff4d4d;
+  color:white;
+}
+
+/* ========================= */
+/* ANIMACIONES */
+/* ========================= */
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* ========================= */
+/* MODAL PRINCIPAL XATSPACE */
+/* ========================= */
+
+.xatspace-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:20000;
+}
+
+/* ========================= */
+/* CAJA PRINCIPAL */
+/* ========================= */
+
+.xatspace-box{
+  width:1200px;
+  height:600px;
+  border-radius:10px;
+  background:#111;
+  padding:50px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 40px 80px rgba(0,0,0,.8);
+}
+
+/* HEADER */
+
+.xatspace-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.xatspace-header h1{
+  font-size:38px;
+  letter-spacing:3px;
+  color:white;
+}
+
+.xatspace-header h1 span{
+  color:#999;
+}
+
+/* TABS */
+
+.xatspace-tabs{
+  display:flex;
+  gap:15px;
+}
+
+.xatspace-tab{
+  padding:10px 25px;
+  background:#1c1c1c;
+  border:1px solid #333;
+  color:#aaa;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.xatspace-tab.active,
+.xatspace-tab:hover{
+  background:#B3B3B3;
+  color:#000;
+}
+
+/* BODY */
+
+.xatspace-body{
+  display:flex;
+  gap:40px;
+  margin-top:25px;
+  flex:1;
+  height:100%;
+  overflow:hidden;
+}
+
+/* GALERIA */
+
+.xatspace-gallery{
+  flex:1;
+  min-width:0;
+  position:relative;
+  padding:25px;
+  border-radius:10px;
+  background:#0d0d0d;
+  border:1px solid #222;
+  overflow:hidden;
+}
+
+.xatspace-gallery::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:20px;
+  right:20px;
+  height:1px;
+  background:rgba(255,255,255,.25);
+}
+
+/* =========================
+   PRECIOS FIJOS
+========================= */
+
+.xatspace-prices{
+  width:260px;
+  height:200px;
+  flex-shrink:0;
+  position:relative;
+  margin-top:20px;
+}
+
+.xatspace-prices::before{
+  content:"";
+  position:absolute;
+  top:-20px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,.4),
+    transparent
+  );
+}
+
+.xatspace-content{
+  margin-left:-27px;
+  width:800px;
+  height:100px;
+  display:none;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.xatspace-content.active{
+  display:flex;
+}
+
+/* CARD */
+
+.xatspace-card{
+  margin-top:10px;
+  width:280px;
+  height:340px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1),
+    opacity .4s ease;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  position:relative;
+}
+
+.xatspace-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.xatspace-card img{
+  width:100%;
+  height:85%;
+  object-fit:cover;
+}
+
+/* =========================================
+   FADE LATERAL SUAVE EN GALERÍA
+========================================= */
+
+.xatspace-slider-wrapper{
+  position:relative;
+}
+
+/* máscara real */
+
+.xatspace-slider-wrapper::before,
+.xatspace-slider-wrapper::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:370px;
+  height:100%;
+  pointer-events:none;
+  z-index:10;
+}
+
+/* lado izquierdo */
+
+.xatspace-slider-wrapper::before{
+  left:0;
+  background:linear-gradient(
+    to right,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+/* lado derecho */
+
+.xatspace-slider-wrapper::after{
+  right:0;
+  background:linear-gradient(
+    to left,
+    #0d0d0d 0%,
+    rgba(13,13,13,0) 20%
+  );
+}
+
+/* NUMERO */
+
+.xatspace-number{
+  position:absolute;
+  top:-1px;
+  left:15px;
+  width:30px;
+  height:50px;
+  background:white;
+  color:black;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+}
+
+/* COLORES */
+
+.xatspace-colors{
+  height:15%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+.xatspace-colors span{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  border:2px solid #000;
+}
+
+/* PANEL PRECIOS */
+
+.xatspace-prices{
+  width:260px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.15);
+  color:white;
+}
+
+.xatspace-prices h3{
+  margin-bottom:25px;
+  font-weight:600;
+}
+
+.xatspace-price-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+.xatspace-price-item b{
+  color:white;
+}
+
+/* ========================= */
+/* SLIDER */
+/* ========================= */
+
+.xatspace-slider-wrapper{
+  width:100%;
+  overflow:hidden;
+}
+
+/* =========================
+   SLIDER TRACK
+========================= */
+
+.xatspace-slider-track{
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  white-space:nowrap;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  perspective:1200px;
+}
+
+.xatspace-slider-track::-webkit-scrollbar{
+  display:none;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.xatspace-card{
+  min-width:260px;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.xatspace-close{
+  position:absolute;
+  top:-5px;
+  right:-6px;
+  width:27px;
+  height:27px;
+  border-radius:10%;
+  background:#535353f1;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font-size:14px;
+  transition:.3s;
+}
+
+.xatspace-close:hover{
+  background:#bdbdbd;
+}
+
+/* ========================= */
+/* MODAL VISOR */
+/* ========================= */
+
+.xatspace-view-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(6px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:30000;
+  animation:fadeIn .25s ease;
+  overflow:hidden;
+}
+
+.xatspace-view-box{
+  position:relative;
+  padding:8px;
+  border-radius:28px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(25px);
+  border:1px solid rgba(255,255,255,0.25);
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.15),
+    0 30px 80px rgba(0,0,0,.7);
+
+  max-width:95vw;
+  max-height:95vh;
+  overflow:hidden;
+}
+
+.xatspace-view-iframe-wrapper{
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.xatspace-view-iframe-wrapper iframe{
+  display:block;
+  width:90vw;
+  height:90vh;
+  max-width:100%;
+  max-height:100%;
+  border:none;
+  border-radius:22px;
+  background:#000;
+}
+
+.xatspace-view-close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:5;
+  transition:.3s ease;
+}
+
+.xatspace-view-close:hover{
+  background:#ff4d4d;
+  color:white;
+}
+
+/* NICK */
+
+.fabricio-nick{
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:3px;
+  display:inline-block;
+  perspective:600px;
+
+  /* degradado continuo */
+  background:linear-gradient(
+    120deg,
+    #cfcfcf,
+    #a6a6a6,
+    #6a6a6a,
+    #454545,
+    #a6a6a6
+  );
+
+  background-size:300% 300%;
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  animation:nickGradient 8s ease infinite;
+}
+
+
+/* LETRAS */
+
+.fabricio-nick span{
+  display:inline-block;
+
+  animation:letterSpin 3s ease-in-out infinite;
+}
+
+
+/* GIRO SUAVE */
+
+@keyframes letterSpin{
+
+  0%{ transform:rotateY(0deg); }
+
+  40%{ transform:rotateY(18deg); }
+
+  60%{ transform:rotateY(-12deg); }
+
+  100%{ transform:rotateY(0deg); }
+
+}
+
+
+/* DEGRADADO SUAVE */
+
+@keyframes nickGradient{
+
+  0%{ background-position:0% 50%; }
+
+  50%{ background-position:100% 50%; }
+
+  100%{ background-position:0% 50%; }
+
+}
+
+/* =========================
+   INTRO PANTALLA COMPLETA
+========================= */
+
+#introXat{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:#000;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+z-index:9999;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* CONTENEDOR */
+
+.introBox{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+
+/* =========================
+   BLOQUE FIRMA + BIENVENIDA
+========================= */
+
+.welcomeXat{
+
+position:absolute;
+top:-22px;
+left:50%;
+transform:translateX(-50%);
+
+width:320px;   /* mismo ancho que la firma */
+text-align:center;
+
+padding:10px 0;
+
+color:#fff;
+font-size:13px;
+letter-spacing:1px;
+
+border-radius:14px;
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+
+border:1px solid rgba(255,255,255,0.25);
+
+box-shadow:
+0 8px 25px rgba(0,0,0,.7),
+inset 0 1px 0 rgba(255,255,255,.25);
+
+animation:welcomeFade 4s ease-in-out infinite;
+
+}
+
+/* =========================
+   FIRMA BOX PRO
+========================= */
+
+.firmaWrap{
+position:relative;
+margin-bottom:40px;
+}
+.firmaBox{
+
+width:320px;
+height:140px;
+
+border-radius:18px;
+
+background:linear-gradient(145deg,#1c1c1c,#2c2c2c);
+
+border:1px solid rgba(255,255,255,0.2);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+overflow:hidden;
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.9),
+inset 0 2px 10px rgba(255,255,255,.08),
+0 0 25px rgba(0,255,200,.15);
+
+transition:.4s;
+
+}
+
+/* HOVER FIRMA */
+
+.firmaBox:hover{
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.9),
+0 0 35px rgba(0,255,200,.25);
+
+}
+
+
+/* IMG FIRMA */
+
+.firmaBox img{
+max-width:90%;
+max-height:90%;
+object-fit:contain;
+}
+
+
+/* =========================
+   AREA BOTON
+========================= */
+
+.enterArea{
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+gap:30px;
+margin-top:25px;
+
+}
+
+
+/* =========================
+   BOTON ENTER PRO
+========================= */
+
+
+
+
+/* BOTON IMG */
+
+.enterArea a img{
+top:-40px;
+width:220px;
+height:auto;
+
+display:block;
+
+position:relative;
+z-index:2;
+
+transition:.35s;
+
+}
+
+
+/* EFECTO HOVER BOTON */
+
+.enterArea a:hover img{
+
+transform:scale(1.05);
+filter:brightness(1.1);
+
+}
+
+
+
+
+/* GLOW BOTON */
+
+.enterArea a:hover{
+
+filter:drop-shadow(0 0 6px rgba(0,255,255,.4))
+       drop-shadow(0 0 12px rgba(0,255,255,.25));
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="introXat">
+
+  <div class="introBox">
+
+    <div class="firmaWrap">
+
+      <div class="welcomeXat">
+        BIENVENIDOS A MI XATSPACE
+      </div>
+
+      <div class="firmaBox">
+        <img src="https://i.ibb.co/gZ4FvJ3n/otro-logo.gif">
+      </div>
+
+    </div>
+
+<div class="enterArea">
+
+
+<a href="#" onclick="entrarXat()" class="enterButton">
+
+<img src="https://xatimg.com/image/3ghbIDuG46T4.png">
+
+<span class="shine"></span>
+
+</a>
+
+
+</div>
+
+  </div>
+
+</div>
+<audio id="musicaIntro" loop>
+<source src="URL-DE-TU-MUSICA.mp3" type="audio/mpeg">
+</audio>
+
+<div class="wrapper">
+
+  <div class="card">
+
+    <div class="left">
+      <div class="left-inner">
+<div class="menu-box">
+<button class="menu-btn">
+  <span class="menu-icon">
+    <i></i>
+    <i></i>
+    <i></i>
+  </span>
+  MENU
+</button>
+
+  <div class="menu-dropdown">
+<button onclick="openModal('profileModal')">PROFILE</button>
+  <button onclick="openModal('friendsModal')">FRIEND</button>
+  <button onclick="openModal('galleryModal')">GALLERY</button>
+  </div>
+</div>
+      </div>
+    </div>
+
+
+    <div class="right">
+
+      <div class="avatar-wrap">
+        <div class="avatar-outer">
+          <div class="avatar-inner">
+            <img src="https://xatimg.com/image/Yg3ZhIrsCgpB.jpg">
+          </div>
+        </div>
+      </div>
+
+      <div class="info"><h2 class="fabricio-nick">
+<h2 class="fabricio-nick">▪︎ ꜰᴀʙʀɪᴄɪᴏ ▪︎</h2>
+        <div class="id">(1544753735)</div>
+ <p class="quote">
+  <span id="typed-text"></span>
+  <span class="cursor">|</span>
+</p>
+
+  <!-- CORAZON MARRIED -->
+  <div class="married-wrap">
+    <div class="married-heart" onclick="abrirMarried()">
+      ❤
+      <span class="married-tooltip">MARRIED</span>
+    </div>
+  </div>
+
+<!-- MUSIC PLAYER -->
+<div class="music-player">
+
+  <!-- DISCO -->
+  <div class="disc-wrapper">
+    <div class="sound-wave"></div>
+    <div class="disc">
+      <img src="https://i.imgur.com/8Km9tLL.jpg" alt="cover">
+    </div>
+  </div>
+
+  <!-- PANEL INFO -->
+  <div class="player-panel">
+
+    <div class="song-info">
+      <span class="artist">CHAYANNE</span>
+      <span class="title">ME ENAMORÉ DE TI</span>
+    </div>
+
+    <div class="playlist">
+      <div class="track active">1 · Chayanne – Me enamoré de ti</div>
+      <div class="track">2 · Chayanne – Torero</div>
+      <div class="track">3 · Chayanne – Tiempo de vals</div>
+    </div>
+
+    <div class="controls">
+      <button>⏮</button>
+      <button class="play">▶</button>
+      <button>⏭</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="home-social">
+
+  <!-- HOME FONDOS -->
+  <a href="https://xat.com/fondos" target="_blank" class="home-link">
+    <img src="https://xat.com/content/web/R00235/img/navbar/home.svg" alt="Home">
+   
+  </a>
+
+  <!-- REDES -->
+  <div class="social-icons">
+    <a href="https://facebook.com/TU_USUARIO" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+    </a>
+
+    <a href="https://instagram.com/TU_USUARIO" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
+    </a>
+
+    <a href="https://wa.me/549TU_NUMERO" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+    </a>
+  </div>
+
+</div>
+
+    </div>
+  </div>
+
+<!-- MENU PRINCIPAL -->
+<div class="main-menu">
+
+  <!-- GIF -->
+  <div class="menu-item">
+    <button>GIFS</button>
+    <div class="submenu">
+<a href="#" onclick="openGifModal('gifmModal')">
+GIF 4D/Parpadeos
+</a>
+ <a href="#" onclick="pcbackgifOpenModal(); return false;">PCBACK</a>
+<a href="#" onclick="pstylegifOpenModal('pstylegifModal'); return false;">PSTYLE</a>
+    </div>
+  </div>
+
+  <!-- FONDOS -->
+  <div class="menu-item">
+    <button>FONDOS</button>
+    <div class="submenu">
+<a href="#" onclick="fpcbackOpenModal('fpcbackModal')">PCBACK</a>
+<a href="#" onclick="openModal('fpstylegifModal')">PSTYLE</a>
+<a href="#" onclick="openModal('bannedModal')">BANNED</a>
+<a href="#" onclick="openModal('salasModal')">FONDOS PARA SALAS</a>
+    </div>
+  </div>
+
+  <!-- XATSPACE -->
+  <div class="menu-item no-dropdown">
+<button onclick="openModal('xatModal')">XATSPACE</button>
+  </div>
+
+  <!-- PRECIOS -->
+  <div class="menu-item no-dropdown">
+    <button onclick="openModal('priceModal')">PRECIOS</button>
+  </div>
+
+</div>
+
+
+
+  <div class="social">
+
+  </div>
+
+</div>
+
+
+</div>
+
+<!-- MODAL PRECIOS -->
+<div class="modal" id="priceModal">
+
+  <div class="modal-content">
+
+ <div class="modalClose" onclick="closeModal('priceModal')">&times;</div>
+
+    <h3 class="modalTitulo">LISTADO DE PRECIOS</h3>
+
+    <div class="modalListado">
+
+      <!-- GIFS -->
+<div class="modalCuadro">
+        <div class="modalSeccion">GIFS</div>
+
+        <div class="modalLinea">
+          <span>GIF 4D</span>
+          <b>600 xats</b>
+        </div>
+
+        <div class="modalLinea">
+          <span>PCBack GIF</span>
+          <b>800 xats</b>
+        </div>
+
+        <div class="modalLinea">
+          <span>PStyle GIF</span>
+          <b>700 xats</b>
+        </div>
+
+        <div class="modalLinea">
+          <span>GIF Parpadeos</span>
+          <b>150 xats</b>
+        </div>
+
+        <div class="modalLinea">
+          <span>GIF Parpadeos con efectos especiales</span>
+          <b>350 xats</b>
+        </div>
+      </div>
+
+
+      <!-- FONDOS -->
+<div class="modalCuadro">
+        <div class="modalSeccion">FONDOS</div>
+
+        <div class="modalLinea">
+          <span>Fondo Banner Normal</span>
+          <b>500 xats</b>
+        </div>
+
+        <div class="modalLinea">
+          <span>Fondo PCBack Normal</span>
+          <b>600 xats</b>
+        </div>
+
+        <div class="modalLinea">
+          <span>Fondo PStyle Normal</span>
+          <b>500 xats</b>
+        </div>
+
+        <div class="modalLinea">
+          <span>Fondos completos para sala (Ext. + Int.)</span>
+          <b>1400 xats</b>
+        </div>
+      </div>
+
+
+      <!-- PROMOCIONES -->
+<div class="modalCuadro">
+        <div class="modalSeccion">PROMOCIONES</div>
+
+        <div class="modalLinea">
+          <span>
+            1 PCBack Normal + 1 PStyle Normal + 1 GIF 4D
+          </span>
+          <b>1100 xats</b>
+        </div>
+
+        <div class="modalLinea">
+          <span>
+            1 PCBack GIF + 1 PStyle GIF + 1 GIF 4D
+          </span>
+          <b>1300 xats</b>
+        </div>
+
+        <div class="modalLinea">
+          <span>
+            2 PCBack GIF + 2 PStyle GIF + 2 GIF 4D
+          </span>
+          <b>2000 xats</b>
+        </div>
+
+      <div class="modalLinea">
+          <span>
+            2 PCBack Normal + 2 PStyle Normal + 2 GIF 4D
+          </span>
+          <b>1700 xats</b>
+        </div>
+
+          <div class="modalLinea">
+          <span>
+            2 Pack completos de fondos (2 exterior + 2 interior)
+          </span>
+          <b>2200 xats</b>
+        </div>
+      </div>
+
+
+      <!-- XATSPACE -->
+<div class="modalCuadro">
+        <div class="modalSeccion">XATSPACE</div>
+        <div class="modalLinea">
+          <span>Diseño Personalizado de xatspace</span>
+          <b>1500 xats</b>
+        </div>
+
+        <div class="modalLinea">
+          <span>Diseño completo de Xatspace</span>
+          <b>2500 xats</b>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<audio id="audioPlayer"></audio>
+
+<!-- MODAL MARRIED REAL STYLE -->
+<div class="modal married-modal" id="marriedModal">
+  <div class="married-box">
+
+    <!-- CERRAR -->
+    <div class="married-close" onclick="closeModal('marriedModal')">✕</div>
+
+    <!-- CONTENIDO -->
+    <div class="married-inner">
+
+      <!-- HEADER -->
+    <div class="married-top">
+      ♡ MARRIED
+    </div>
+
+
+      <!-- CARD -->
+      <div class="married-card">
+
+        <!-- LADO IZQUIERDO -->
+        <div class="married-left">
+          <h2>Day</h2>
+          <div class="married-id">Id: 116447265</div>
+
+<p class="married-text">
+  <span id="married-typed"></span>
+  <span class="cursor">|</span>
+</p> 
+
+<a href="https://xat.me/iDaii" target="_blank" class="married-btn">
+  XAT.ME
+</a>
+
+        </div>
+
+        <!-- LADO DERECHO CON FONDO -->
+        <div class="married-right">
+          <div class="bg-img"></div>
+        </div>
+
+        <!-- AVATAR -->
+        <div class="married-avatar">
+          <img src="https://xatimg.com/image/qyKfSTSYPyJj.png">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PROFILE MODAL ================= -->
+
+<div class="profile-modal" id="profileModal">
+
+  <div class="profile-box">
+
+    <div class="profile-close" onclick="closeModal('profileModal')">✕</div>
+
+    <div class="profile-top">
+      ✦ PROFILE ✦
+    </div>
+
+    <div class="profile-card">
+
+      <!-- LADO IZQUIERDO -->
+      <div class="profile-left">
+
+        <h2>ꜰᴀʙʀɪᴄɪᴏ</h2>
+        <div class="profile-id">Id: 18374658</div>
+
+<div class="profile-info">
+  País: Argentina
+  <img class="flag" src="https://flagcdn.com/w20/ar.png" alt="Argentina">
+</div>
+
+        <div class="profile-info">
+          Signo: Escorpio ♏
+        </div>
+
+        <p class="profile-text">
+          <span id="profile-typed"></span>
+          <span class="cursor">|</span>
+        </p>
+
+      </div>
+
+      <!-- LADO DERECHO -->
+      <div class="profile-right">
+        <div class="profile-bg"></div>
+      </div>
+
+      <!-- AVATAR -->
+      <div class="profile-avatar">
+        <img src="https://xatimg.com/image/Yg3ZhIrsCgpB.jpg">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FRIENDS -->
+<div class="modal friends-modal" id="friendsModal">
+
+  <div class="friends-box">
+
+    <div class="friends-close" onclick="closeModal('friendsModal')">✕</div>
+
+    <div class="friends-top">
+      ✦ FRIEND ✦
+    </div>
+
+<div class="friends-panel">
+
+  <div class="friends-container" id="friendsContainer">
+
+<!-- CARD 1 -->
+<div class="friend-card"
+     style="--card-color1:#71f777; --card-color2:#84f775;">
+     
+  <div class="friend-frame">
+
+    <div class="friend-image">
+      <img src="https://xatimg.com/image/olCuzqKiPQ9E.png">
+    </div>
+
+    <!-- CIRCULO XAT CLICKABLE -->
+    <a href="https://xat.me/1481238440" 
+       target="_blank" 
+       class="friend-xat">
+       xat
+    </a>
+
+    <div class="friend-name">Paola♥</div>
+
+  </div>
+</div>
+
+<!-- CARD 2 -->
+<div class="friend-card"
+     style="--card-color1:#3895ec; --card-color2:#1278ec;">
+  <div class="friend-frame">
+    <div class="friend-image">
+      <img src="https://xatimg.com/image/XrbiBgWqx91m.png">
+    </div>
+    <!-- CIRCULO XAT CLICKABLE -->
+    <a href="https://xat.me/1483649245" 
+       target="_blank" 
+       class="friend-xat">
+       xat
+    </a>
+    <div class="friend-name">Mariis♥</div>
+  </div>
+</div>
+
+<!-- CARD 3 -->
+<div class="friend-card"
+     style="--card-color1:#8638ec; --card-color2:#6512ec;">
+  <div class="friend-frame">
+    <div class="friend-image">
+      <img src="https://xatimg.com/image/DOJ3iYzwQcwj.png">
+    </div>
+    <!-- CIRCULO XAT CLICKABLE -->
+    <a href="https://xat.me/1550045880" 
+       target="_blank" 
+       class="friend-xat">
+       xat
+    </a>
+    <div class="friend-name">Oriana♥</div>
+  </div>
+</div>
+
+<!-- CARD 4 -->
+<div class="friend-card"
+     style="--card-color1:#38b9ec; --card-color2:#1295ec;">
+  <div class="friend-frame">
+    <div class="friend-image">
+      <img src="https://xatimg.com/image/3iqlKP23meUj.png">
+    </div>
+    <!-- CIRCULO XAT CLICKABLE -->
+    <a href="https://xat.me/1526462128" 
+       target="_blank" 
+       class="friend-xat">
+       xat
+    </a>
+    <div class="friend-name">Diana♥</div>
+  </div>
+</div>
+
+<!-- CARD 5 -->
+<div class="friend-card"
+     style="--card-color1:#f390b6; --card-color2:#d86688;">
+  <div class="friend-frame">
+    <div class="friend-image">
+      <img src="https://xatimg.com/image/lE3I2TanmMlu.png">
+    </div>
+    <!-- CIRCULO XAT CLICKABLE -->
+    <a href="https://xat.me/111111" 
+       target="_blank" 
+       class="friend-xat">
+       xat
+    </a>
+    <div class="friend-name">Elizabeth♥</div>
+  </div>
+</div>
+
+<!-- CARD 6 -->
+<div class="friend-card"
+     style="--card-color1:#f7b3cf; --card-color2:#ee8dba;">
+  <div class="friend-frame">
+    <div class="friend-image">
+      <img src="https://xatimg.com/image/2iHkxBBc3MHa.png">
+    </div>
+    <!-- CIRCULO XAT CLICKABLE -->
+    <a href="https://xat.me/7700077" 
+       target="_blank" 
+       class="friend-xat">
+       xat
+    </a>
+    <div class="friend-name">Gaby♥</div>
+  </div>
+</div>
+
+<!-- CARD 2 -->
+<div class="friend-card"
+     style="--card-color1:#3895ec; --card-color2:#1278ec;">
+  <div class="friend-frame">
+    <div class="friend-image">
+      <img src="https://xatimg.com/image/FFp5QHGPbD1N.png">
+    </div>
+    <!-- CIRCULO XAT CLICKABLE -->
+    <a href="https://xat.me/643981803" 
+       target="_blank" 
+       class="friend-xat">
+       xat
+    </a>
+    <div class="friend-name">Rulis♥</div>
+  </div>
+</div>
+
+<!-- CARD 2 -->
+<div class="friend-card"
+     style="--card-color1:#FC889D; --card-color2:#F7A6B4;">
+  <div class="friend-frame">
+    <div class="friend-image">
+      <img src="https://xatimg.com/image/w66ipr8PM99u.png">
+    </div>
+    <!-- CIRCULO XAT CLICKABLE -->
+    <a href="https://xat.me/1538388263" 
+       target="_blank" 
+       class="friend-xat">
+       xat
+    </a>
+    <div class="friend-name">Lyeh♥</div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div> <!-- ✅ ESTE CIERRE FALTABA (friendsModal termina acá) -->
+
+
+<!-- MODAL GALLERY -->
+<div class="modal gallery-modal" id="galleryModal">
+
+  <div class="gallery-box">
+
+    <!-- BOTON CERRAR -->
+    <div class="gallery-close" onclick="closeModal('galleryModal')">✕</div>
+
+    <!-- TITULO -->
+    <div class="gallery-top">
+     ✦ GALLERY ✦
+    </div>
+
+    <!-- PANEL -->
+    <div class="gallery-panel">
+
+<div class="gallery-container" id="galleryContainer">
+
+        <!-- FOTO 1 -->
+        <div class="gallery-card card-green">
+          <img src="https://xatimg.com/image/M6oR39ktSUmw.jpg">
+        </div>
+
+        <!-- FOTO 2 -->
+        <div class="gallery-card card-blue">
+          <img src="https://xatimg.com/image/kVnYGxpNX6fB.jpg">
+        </div>
+
+        <!-- FOTO 3 -->
+        <div class="gallery-card card-red">
+          <img src="https://xatimg.com/image/yfR9e3D73hHi.jpg">
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- ================= MODAL GIF ===================== -->
+<!-- ================================================= -->
+
+<div class="gifm-modal" id="gifmModal">
+
+  <div class="gifm-pro-box">
+
+    <!-- CERRAR -->
+<div class="gifm-close" onclick="closeGifModal('gifmModal')">✕</div>
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="gifm-header">
+
+      <h1>GIF<span>STORE</span></h1>
+
+      <div class="gifm-tabs-pro">
+        <button class="gifm-pro-tab active" data-target="gifm-mujeres">MUJERES</button>
+        <button class="gifm-pro-tab" data-target="gifm-hombres">HOMBRES</button>
+        <button class="gifm-pro-tab" data-target="gifm-normal">PARPADEO NORMAL</button>
+        <button class="gifm-pro-tab" data-target="gifm-especial">PARPADEO ESPECIAL</button>
+      </div>
+
+    </div>
+
+
+    <!-- ================= BODY ================= -->
+
+    <div class="gifm-body">
+
+
+      <!-- ================= GALERIA ================= -->
+
+      <div class="gifm-gallery">
+
+        <!-- ========= MUJERES ========= -->
+        <div class="gifm-content gifm-grid active" id="gifm-mujeres">
+
+<div class="gifm-card" style="--gif-light: rgba(128,20,20,0.6);--gif-dark: rgba(166,51,51,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/oKh3NcEmDQCb.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">1</div>
+            <div class="gifm-model">MODEL</div>
+          </div>
+
+          
+<div class="gifm-card" style="--gif-light: rgba(252,144,196,0.6);--gif-dark: rgba(252,144,196,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/4RPio1Gotadt.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">2</div>
+            <div class="gifm-model">MODEL</div>
+          </div>
+
+<div class="gifm-card" style="--gif-light: rgba(203,144,252,0.6);--gif-dark: rgba(203,144,252,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/UG4tvkxhG42M.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">3</div>
+            <div class="gifm-model">MODEL</div>
+          </div>
+
+<div class="gifm-card" style="--gif-light: rgba(119,82,85,0.6);--gif-dark: rgba(119,82,85,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/kBJNQQET3UXc.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">4</div>
+            <div class="gifm-model">MODEL</div>
+          </div>
+
+<div class="gifm-card" style="--gif-light: rgba(223,155,74,0.6);--gif-dark: rgba(223,155,74,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/eGs03lczCyqD.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">5</div>
+            <div class="gifm-model">MODEL</div>
+          </div>
+
+<div class="gifm-card" style="--gif-light: rgba(197,197,197,0.6);--gif-dark: rgba(197,197,197,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/pggGcsckGw8t.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">6</div>
+            <div class="gifm-model">MODEL</div>
+          </div>
+
+<div class="gifm-card" style="--gif-light: rgba(83,189,225,0.6);--gif-dark: rgba(83,189,225,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/XJUTAgWweUNZ.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">7</div>
+            <div class="gifm-model">MODEL</div>
+          </div>
+
+<div class="gifm-card" style="--gif-light: rgba(83,148,225,0.6);--gif-dark: rgba(83,148,225,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/NS4B2HTpmGtT.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">8</div>
+            <div class="gifm-model">MODEL</div>
+          </div>
+
+        </div>
+
+
+        <!-- ========= HOMBRES ========= -->
+        <div class="gifm-content gifm-grid" id="gifm-hombres">
+
+<div class="gifm-card" style="--gif-light: rgba(125,83,225,0.6);--gif-dark: rgba(125,83,225,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/AxRLMByIfItO.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">1</div>
+            <div class="gifm-model">MODEL</div>
+          </div>
+
+<div class="gifm-card" style="--gif-light: rgba(226,52,32,0.6);--gif-dark: rgba(226,52,32,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/tOeVEjlPofNu.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">2</div>
+            <div class="gifm-model">MODEL</div>
+          </div>
+
+        </div>
+
+
+        <!-- ========= PARPADEO NORMAL ========= -->
+        <div class="gifm-content gifm-grid" id="gifm-normal">
+
+<div class="gifm-card" style="--gif-light: rgba(119,119,119,0.6);--gif-dark: rgba(119,119,119,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/te8roAuYLgLZ.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">1</div>
+            <div class="gifm-model">Modelo</div>
+          </div>
+
+<div class="gifm-card" style="--gif-light: rgba(119,119,119,0.6);--gif-dark: rgba(119,119,119,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/6BLrX6XCDCVa.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">2</div>
+            <div class="gifm-model">MOdelo</div>
+          </div>
+
+        </div>
+
+
+        <!-- ========= PARPADEO ESPECIAL ========= -->
+        <div class="gifm-content gifm-grid" id="gifm-especial">
+
+<div class="gifm-card" style="--gif-light: rgba(128,20,20,0.6);--gif-dark: rgba(166,51,51,0.6);">
+            <div class="gifm-img">
+              <img src="https://xatimg.com/image/AxRLMByIfItO.gif">
+            </div>
+            <div class="gifm-triangle"></div>
+            <div class="gifm-number">1</div>
+            <div class="gifm-model">SPECIAL</div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- FIN GALERIA -->
+
+
+      <!-- ================= PRECIOS ================= -->
+
+      <div class="gifm-prices">
+
+        <h3>PRECIOS</h3>
+
+        <div class="gifm-price-item">
+          <span>GIFS 4D</span>
+          <b>600 xats</b>
+        </div>
+
+        <div class="gifm-price-item">
+          <span>GIFS PARPADEOL</span>
+          <b>140 xats</b>
+        </div>
+
+        <div class="gifm-price-item">
+          <span>GIFS ESPECIAL</span>
+          <b>350 xats</b>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- FIN BODY -->
+
+  </div>
+  <!-- FIN BOX -->
+
+</div>
+<!-- FIN MODAL -->
+
+<div class="pcbackgif-modal-scope">
+
+<div class="pcbackgif-modal" id="pcbackgifModal">
+
+  <div class="pcbackgif-pro-box">
+
+    <!-- CERRAR -->
+    <div class="pcbackgif-close" onclick="pcbackgifCloseModal()">✕</div>
+
+    <!-- HEADER -->
+    <div class="pcbackgif-header">
+
+      <h1>PCBACK<span>GIF</span></h1>
+
+      <div class="pcbackgif-tabs-pro">
+        <button class="pcbackgif-pro-tab active" data-target="mujeres">MUJERES</button>
+        <button class="pcbackgif-pro-tab" data-target="hombres">HOMBRES</button>
+      </div>
+
+    </div>
+
+    <div class="pcbackgif-body">
+
+      <div class="pcbackgif-gallery">
+
+        <div class="pcbackgif-pro-content active" id="mujeres">
+
+          <div class="pcbackgif-slider-wrapper">
+            <div class="pcbackgif-slider-track">
+
+              <div class="pcbackgif-card" onclick="pcbackgifOpenView(this)">
+                <div class="pcbackgif-pro-number">1</div>
+                <img src="https://i.ibb.co/W4w3m5jV/mayssss.gif">
+
+                <div class="pcbackgif-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#666"></span>
+                  <span style="background:#bbb"></span>
+                </div>
+              </div>
+
+              <div class="pcbackgif-card" onclick="pcbackgifOpenView(this)">
+                <div class="pcbackgif-pro-number">2</div>
+                <img src="https://i.ibb.co/VpqF4x46/olagl-wyjra.gif">
+
+                <div class="pcbackgif-colors">
+                  <span style="background:#000"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+              <div class="pcbackgif-card" onclick="pcbackgifOpenView(this)">
+                <div class="pcbackgif-pro-number">3</div>
+                <img src="https://i.ibb.co/VpqF4x46/olagl-wyjra.gif">
+
+                <div class="pcbackgif-colors">
+                  <span style="background:#000"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="pcbackgif-pro-content" id="hombres">
+
+          <div class="pcbackgif-slider-wrapper">
+            <div class="pcbackgif-slider-track">
+
+              <div class="pcbackgif-card" onclick="pcbackgifOpenView(this)">
+                <div class="pcbackgif-pro-number">1</div>
+                <img src="https://i.ibb.co/TBqRnTP4/uo5z1-axm9d.gif">
+
+                <div class="pcbackgif-colors">
+                  <span style="background:#222"></span>
+                  <span style="background:#777"></span>
+                  <span style="background:#ccc"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="pcbackgif-prices">
+
+        <h3>PRECIOS</h3>
+
+        <div class="pcbackgif-price-item">
+          <span>Pcback gif</span>
+          <b>800 xats</b>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- VISUALIZADOR -->
+
+<div class="pcview-modal" id="pcbackgifViewModal">
+
+  <div class="pcview-box">
+
+    <div class="pcview-close" onclick="pcbackgifCloseView()">✕</div>
+
+    <div class="pcview-img-wrapper">
+      <img id="pcbackgifViewImage" src="">
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<!-- ================= MODAL PSTYLE GIF ================= -->
+
+<div class="pstylegif-modal-scope">
+
+<div class="pstylegif-modal" id="pstylegifModal">
+
+  <div class="pstylegif-pro-box">
+
+    <!-- CERRAR -->
+    <div class="pstylegif-close" onclick="pstylegifCloseModal('pstylegifModal')">✕</div>
+
+    <!-- HEADER -->
+    <div class="pstylegif-header">
+
+      <h1>PSTYLE<span>GIF</span></h1>
+
+      <div class="pstylegif-tabs-pro">
+        <button class="pstylegif-pro-tab active" data-target="pstylegif-mujeres">MUJERES</button>
+        <button class="pstylegif-pro-tab" data-target="pstylegif-hombres">HOMBRES</button>
+      </div>
+
+    </div>
+
+
+    <!-- ================= BODY ================= -->
+
+    <div class="pstylegif-body">
+
+
+      <!-- ================= GALERIA ================= -->
+
+      <div class="pstylegif-gallery">
+
+
+        <!-- ========= MUJERES ========= -->
+
+        <div class="pstylegif-pro-content active" id="pstylegif-mujeres">
+
+          <div class="pstylegif-slider-wrapper">
+            <div class="pstylegif-slider-track">
+
+              <div class="pstylegif-card" onclick="pstylegifOpenPcView(this)">
+                <div class="pstylegif-pro-number">1</div>
+                <img src="https://i.ibb.co/HpBQD5KT/y1nks-fbvev.gif">
+
+                <div class="pstylegif-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#666"></span>
+                  <span style="background:#bbb"></span>
+                </div>
+              </div>
+
+              <div class="pstylegif-card" onclick="pstylegifOpenPcView(this)">
+                <div class="pstylegif-pro-number">2</div>
+                <img src="https://i.ibb.co/D27yP5v/feufv-aif7u.gif">
+
+                <div class="pstylegif-colors">
+                  <span style="background:#000"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- ========= HOMBRES ========= -->
+
+        <div class="pstylegif-pro-content" id="pstylegif-hombres">
+
+          <div class="pstylegif-slider-wrapper">
+            <div class="pstylegif-slider-track">
+
+              <div class="pstylegif-card" onclick="pstylegifOpenPcView(this)">
+                <div class="pstylegif-pro-number">1</div>
+                <img src="https://i.ibb.co/21J06CQq/ewcw5-jfjuf.gif">
+
+                <div class="pstylegif-colors">
+                  <span style="background:#222"></span>
+                  <span style="background:#777"></span>
+                  <span style="background:#ccc"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- FIN GALERIA -->
+
+
+      <!-- ================= PRECIOS ================= -->
+
+      <div class="pstylegif-prices">
+
+        <h3>PRECIOS</h3>
+
+        <div class="pstylegif-price-item">
+          <span>Pstyle gif</span>
+          <b>700 xats</b>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- FIN BODY -->
+
+  </div>
+  <!-- FIN BOX -->
+
+</div>
+<!-- FIN MODAL -->
+
+
+
+<!-- ================= VISOR PSTYLE ================= -->
+
+<div class="pstylegifview-modal" id="pstylegifViewModal">
+
+  <div class="pstylegifview-box">
+
+    <!-- CERRAR -->
+    <div class="pstylegif-view-close"
+         onclick="pstylegifClosePcView()">✕</div>
+
+    <div class="pstylegif-img-wrapper">
+      <img id="pstylegifViewImage" src="">
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<div class="fpcback-modal-scope">
+
+<div class="fpcbackgif-modal" id="fpcbackModal">
+
+  <div class="fpcbackgif-pro-box">
+
+    <!-- CERRAR -->
+    <div class="fpcbackgif-close" onclick="fpcbackCloseModal('fpcbackModal')">✕</div>
+
+    <!-- HEADER -->
+    <div class="fpcbackgif-header">
+
+      <h1>PCBACK<span></span></h1>
+
+      <div class="fpcbackgif-tabs-pro">
+        <button class="fpcbackgif-pro-tab active" data-target="fpcback-mujeres">MUJERES</button>
+        <button class="fpcbackgif-pro-tab" data-target="fpcback-hombres">HOMBRES</button>
+      </div>
+
+    </div>
+
+
+    <!-- ================= BODY ================= -->
+
+    <div class="fpcbackgif-body">
+
+
+      <!-- ================= GALERIA ================= -->
+
+      <div class="fpcbackgif-gallery">
+
+
+        <!-- ========= MUJERES ========= -->
+
+        <div class="fpcbackgif-pro-content active" id="fpcback-mujeres">
+
+          <div class="fpcbackgif-slider-wrapper">
+            <div class="fpcbackgif-slider-track">
+
+              <div class="fpcbackgif-card" onclick="fpcbackOpenPcView(this)">
+                <div class="fpcbackgif-pro-number">1</div>
+                <img src="https://xatimg.com/image/DciwWBHFfXoN.png">
+
+                <div class="fpcbackgif-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#666"></span>
+                  <span style="background:#bbb"></span>
+                </div>
+              </div>
+
+              <div class="fpcbackgif-card" onclick="fpcbackOpenPcView(this)">
+                <div class="fpcbackgif-pro-number">2</div>
+                <img src="https://xatimg.com/image/eAuJnzdEcbmS.png">
+
+                <div class="fpcbackgif-colors">
+                  <span style="background:#000"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+              <div class="fpcbackgif-card" onclick="fpcbackOpenPcView(this)">
+                <div class="fpcbackgif-pro-number">3</div>
+                <img src="https://xatimg.com/image/ngisItRaSOiX.png">
+
+                <div class="fpcbackgif-colors">
+                  <span style="background:#000"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- ========= HOMBRES ========= -->
+
+        <div class="fpcbackgif-pro-content" id="fpcback-hombres">
+
+          <div class="fpcbackgif-slider-wrapper">
+            <div class="fpcbackgif-slider-track">
+
+              <div class="fpcbackgif-card" onclick="fpcbackOpenPcView(this)">
+                <div class="fpcbackgif-pro-number">1</div>
+                <img src="https://xatimg.com/image/YHvuL7Dizo2w.png">
+
+                <div class="fpcbackgif-colors">
+                  <span style="background:#222"></span>
+                  <span style="background:#777"></span>
+                  <span style="background:#ccc"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- FIN GALERIA -->
+
+
+      <!-- ================= PRECIOS ================= -->
+
+      <div class="fpcbackgif-prices">
+
+        <h3>PRECIOS</h3>
+
+        <div class="fpcbackgif-price-item">
+          <span>Pcback Normal</span>
+          <b>600 xats</b>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- FIN BODY -->
+
+  </div>
+  <!-- FIN BOX -->
+
+</div>
+<!-- FIN MODAL -->
+
+
+
+<!-- ================= VISUALIZADOR ================= -->
+
+<div class="fpcview-modal" id="fpcbackViewModal">
+
+  <div class="fpcview-box">
+
+    <!-- Botón cerrar -->
+    <div class="fpcview-close" onclick="fpcbackClosePcView()">✕</div>
+
+    <!-- Contenedor imagen -->
+    <div class="fpcview-img-wrapper">
+      <img id="fpcbackViewImage" src="">
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<!-- ================= MODAL FPSTYLE GIF ================= -->
+
+<div class="fpstyle">
+
+<div class="fpstylegif-modal" id="fpstylegifModal">
+
+  <div class="fpstylegif-pro-box">
+
+    <!-- CERRAR -->
+    <div class="fpstylegif-close" onclick="fpstyleCloseModal()">✕</div>
+
+    <!-- HEADER -->
+    <div class="fpstylegif-header">
+
+      <h1>PSTYLE<span></span></h1>
+
+      <div class="fpstylegif-tabs-pro">
+        <button class="fpstylegif-pro-tab active" data-target="fpstyle-mujeres">MUJERES</button>
+        <button class="fpstylegif-pro-tab" data-target="fpstyle-hombres">HOMBRES</button>
+      </div>
+
+    </div>
+
+    <!-- BODY -->
+    <div class="fpstylegif-body">
+
+      <!-- GALERIA -->
+      <div class="fpstylegif-gallery">
+
+        <!-- MUJERES -->
+        <div class="fpstylegif-pro-content active" id="fpstyle-mujeres">
+
+          <div class="fpstylegif-slider-wrapper">
+            <div class="fpstylegif-slider-track">
+
+              <div class="fpstylegif-card" onclick="fpstyleOpenGifView(this)">
+                <div class="fpstylegif-pro-number">1</div>
+                <img src="https://xatimg.com/image/wZF4MhwthUVZ.png">
+
+                <div class="fpstylegif-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#666"></span>
+                  <span style="background:#bbb"></span>
+                </div>
+              </div>
+
+              <div class="fpstylegif-card" onclick="fpstyleOpenGifView(this)">
+                <div class="fpstylegif-pro-number">2</div>
+                <img src="https://xatimg.com/image/pHITxJAQtpw3.png">
+
+                <div class="fpstylegif-colors">
+                  <span style="background:#000"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- HOMBRES -->
+        <div class="fpstylegif-pro-content" id="fpstyle-hombres">
+
+          <div class="fpstylegif-slider-wrapper">
+            <div class="fpstylegif-slider-track">
+
+              <div class="fpstylegif-card" onclick="fpstyleOpenGifView(this)">
+                <div class="fpstylegif-pro-number">1</div>
+                <img src="https://xatimg.com/image/pHITxJAQtpw3.png">
+
+                <div class="fpstylegif-colors">
+                  <span style="background:#222"></span>
+                  <span style="background:#777"></span>
+                  <span style="background:#ccc"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- PRECIOS -->
+      <div class="fpstylegif-prices">
+
+        <h3>PRECIOS</h3>
+
+        <div class="fpstylegif-price-item">
+          <span>Pstlye Normal</span>
+          <b>500 xats</b>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- VISOR -->
+
+<div class="fpstylegif-view-modal" id="fpstylegifViewModal">
+
+  <div class="fpstylegifview-box">
+
+    <div class="fpstylegif-view-close"
+         onclick="fpstyleCloseGifView()">✕</div>
+
+    <div class="fpstylegif-img-wrapper">
+      <img id="fpstylegifViewImage" src="">
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<!-- ================= MODAL BANNED GIF ================= -->
+
+<div class="banned banned-modal" id="bannedModal">
+
+  <div class="banned-pro-box">
+
+    <!-- CERRAR -->
+    <div class="banned-close" onclick="bannedCloseModal()">✕</div>
+
+    <!-- HEADER -->
+    <div class="banned-header">
+
+      <h1>BANNED<span></span></h1>
+
+      <div class="banned-tabs-pro">
+        <button class="banned-pro-tab active" data-target="banned-promociones">PROMOCIONES</button>
+        <button class="banned-pro-tab" data-target="banned-eventos">EVENTOS</button>
+      </div>
+
+    </div>
+
+
+    <!-- ================= BODY ================= -->
+
+    <div class="banned-body">
+
+
+      <!-- ================= GALERIA ================= -->
+
+      <div class="banned-gallery">
+
+
+        <!-- ========= PROMOCIONES ========= -->
+
+        <div class="banned-pro-content active" id="banned-promociones">
+
+          <div class="banned-slider-wrapper">
+            <div class="banned-slider-track">
+
+              <div class="banned-card" onclick="bannedOpenView(this)">
+                <div class="banned-pro-number">1</div>
+                <img src="https://xatimg.com/image/YNGGAmvfsDcO.png">
+
+                <div class="banned-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#666"></span>
+                  <span style="background:#bbb"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- ========= EVENTOS ========= -->
+
+        <div class="banned-pro-content" id="banned-eventos">
+
+          <div class="banned-slider-wrapper">
+            <div class="banned-slider-track">
+
+              <div class="banned-card" onclick="bannedOpenView(this)">
+                <div class="banned-pro-number">1</div>
+                <img src="https://xatimg.com/image/YNGGAmvfsDcO.png">
+
+                <div class="banned-colors">
+                  <span style="background:#222"></span>
+                  <span style="background:#777"></span>
+                  <span style="background:#ccc"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- FIN GALERIA -->
+
+
+      <!-- ================= PRECIOS ================= -->
+
+      <div class="banned-prices">
+
+        <h3>PRECIOS</h3>
+
+        <div class="banned-price-item">
+          <span>Banned Normal</span>
+          <b>500 xats</b>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- FIN BODY -->
+
+  </div>
+  <!-- FIN BOX -->
+
+</div>
+<!-- FIN MODAL -->
+
+
+
+<!-- ================= VISOR BANNED ================= -->
+
+<div class="banned bannedview-modal" id="bannedViewModal">
+
+  <div class="bannedview-box">
+
+    <!-- CERRAR -->
+    <div class="banned-view-close"
+         onclick="bannedCloseView()">✕</div>
+
+    <div class="banned-img-wrapper">
+      <img id="bannedViewImage" src="">
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="modal-sala-modal" id="salasModal">
+
+  <div class="modal-sala-pro-box">
+
+    <!-- CERRAR -->
+    <div class="modal-sala-close" onclick="closeModalSala('salasModal')">✕</div>
+
+    <!-- HEADER -->
+    <div class="modal-sala-header">
+
+      <h1>SALAS<span>BACKGROUNDS</span></h1>
+
+      <div class="modal-sala-tabs-pro">
+        <button class="modal-sala-pro-tab active" data-target="salasfondos">FONDOS PARA SALAS</button>
+        <button class="modal-sala-pro-tab" data-target="eventosfondos">FONDOS PARA EVENTOS</button>
+      </div>
+
+    </div>
+
+
+    <!-- ================= BODY ================= -->
+
+    <div class="modal-sala-body">
+
+
+      <!-- ================= GALERIA ================= -->
+
+      <div class="modal-sala-gallery">
+
+
+        <!-- ========= FONDOS SALAS ========= -->
+
+        <div class="modal-sala-pro-content active" id="salasfondos">
+
+          <div class="modal-sala-slider-wrapper">
+            <div class="modal-sala-slider-track">
+
+              <!-- CARD 1 -->
+
+<div class="modal-sala-card"
+     data-exterior="https://xatimg.com/image/QiXkMT7kCRZJ.png"
+     data-interior="https://xatimg.com/image/wPRJ8wtrOLyA.png"
+     onclick="openModalSalaView(this)">
+
+  <img src="https://xatimg.com/image/wPRJ8wtrOLyA.png">
+
+  <div class="modal-sala-card-number">1</div>
+
+  <!-- COLORES -->
+  <div class="modal-sala-card-colors">
+    <span style="background:#111"></span>
+    <span style="background:#444"></span>
+    <span style="background:#999"></span>
+  </div>
+
+</div>
+
+
+              <!-- CARD 2 -->
+
+<div class="modal-sala-card"
+     data-exterior="https://xatimg.com/image/uODVli02SPoJ.png"
+     data-interior="https://xatimg.com/image/7NYwBitwP4Vz.png"
+     onclick="openModalSalaView(this)">
+
+  <img src="https://xatimg.com/image/7NYwBitwP4Vz.png">
+
+  <div class="modal-sala-card-number">2</div>
+
+  <!-- COLORES -->
+  <div class="modal-sala-card-colors">
+    <span style="background:#111"></span>
+    <span style="background:#444"></span>
+    <span style="background:#999"></span>
+  </div>
+
+</div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- ========= FONDOS EVENTOS ========= -->
+
+        <div class="modal-sala-pro-content" id="eventosfondos">
+
+          <div class="modal-sala-slider-wrapper">
+            <div class="modal-sala-slider-track">
+
+              <!-- CARD EVENTO -->
+
+<div class="modal-sala-card"
+     data-exterior="https://xatimg.com/image/QF2dd2LiFBVZ.png"
+     data-interior="https://xatimg.com/image/zEwbbNjFNFsJ.png"
+     onclick="openModalSalaView(this)">
+
+  <img src="https://xatimg.com/image/zEwbbNjFNFsJ.png">
+
+  <div class="modal-sala-card-number">1</div>
+
+  <!-- COLORES -->
+  <div class="modal-sala-card-colors">
+    <span style="background:#111"></span>
+    <span style="background:#444"></span>
+    <span style="background:#999"></span>
+  </div>
+
+</div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- FIN GALERIA -->
+
+
+      <!-- ================= PRECIOS ================= -->
+
+      <div class="modal-sala-prices">
+
+        <h3>PRECIOS</h3>
+
+        <div class="modal-sala-price-item">
+          <span>Fondo para salas</span>
+          <b>1400 xats</b>
+        </div>
+
+        <div class="modal-sala-price-item">
+          <span>Fondo para eventos</span>
+          <b>1400 xats</b>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- FIN BODY -->
+
+  </div>
+  <!-- FIN BOX -->
+
+</div>
+<!-- FIN MODAL -->
+
+
+<!-- ================================================= -->
+<!-- MODAL VISUALIZADOR SALAS (INTERIOR / EXTERIOR) -->
+<!-- ================================================= -->
+
+<div class="modal-sala-view-modal" id="salasViewModal">
+
+  <div class="modal-sala-view-box">
+
+    <!-- Botón cerrar -->
+    <div class="modal-sala-view-close" onclick="closeModalSalaView()">✕</div>
+
+    <!-- WRAPPER DOBLE -->
+
+    <div class="modal-sala-view-dual-wrapper">
+
+      <div class="modal-sala-view-side">
+        <div class="modal-sala-view-label">Exterior</div>
+        <div class="modal-sala-view-img-wrapper">
+          <img id="salasviewExterior" src="">
+        </div>
+      </div>
+
+      <div class="modal-sala-view-side">
+        <div class="modal-sala-view-label">Interior</div>
+        <div class="modal-sala-view-img-wrapper">
+          <img id="salasviewInterior" src="">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- NUEVO MODAL XATSPACE -->
+<!-- ========================= -->
+
+<div class="xatspace-modal" id="xatModal">
+
+  <div class="xatspace-box">
+
+    <!-- Cerrar -->
+<div class="xatspace-close" onclick="closeXatspaceModal('xatModal')">✕</div>
+
+    <!-- Header -->
+    <div class="xatspace-header">
+
+      <h1>XATSPACE<span></span></h1>
+
+      <div class="xatspace-tabs">
+        <button class="xatspace-tab active" data-target="premium">PREMIUM</button>
+        <button class="xatspace-tab" data-target="normal">NORMAL</button>
+        <button class="xatspace-tab" data-target="custom">PERSONALIZADOS</button>
+      </div>
+
+    </div>
+
+    <!-- BODY -->
+    <div class="xatspace-body">
+
+      <!-- GALERIA -->
+      <div class="xatspace-gallery">
+
+        <!-- PREMIUM -->
+
+        <div class="xatspace-content active" id="premium">
+
+          <div class="xatspace-slider-wrapper">
+            <div class="xatspace-slider-track">
+
+              <div class="xatspace-card" data-url="https://ifabriicio.github.io/Jefa/">
+                <div class="xatspace-number">1</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+                <div class="xatspace-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+              <div class="xatspace-card">
+                <div class="xatspace-number">2</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+              </div>
+
+              <div class="xatspace-card" data-url="https://ifabriicio.github.io/Jefa/">
+                <div class="xatspace-number">3</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+                <div class="xatspace-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+               <div class="xatspace-card" data-url="https://ifabriicio.github.io/Jefa/">
+                <div class="xatspace-number">4</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+                <div class="xatspace-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>             
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- NORMAL -->
+
+        <div class="xatspace-content" id="normal">
+
+          <div class="xatspace-slider-wrapper">
+            <div class="xatspace-slider-track">
+
+               <div class="xatspace-card" data-url="https://ifabriicio.github.io/Jefa/">
+                <div class="xatspace-number">1</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+                <div class="xatspace-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+              <div class="xatspace-card">
+                <div class="xatspace-number">2</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+              </div>
+
+              <div class="xatspace-card" data-url="https://ifabriicio.github.io/Jefa/">
+                <div class="xatspace-number">3</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+                <div class="xatspace-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+               <div class="xatspace-card" data-url="https://ifabriicio.github.io/Jefa/">
+                <div class="xatspace-number">4</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+                <div class="xatspace-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>             
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- PERSONALIZADOS -->
+
+        <div class="xatspace-content" id="custom">
+
+          <div class="xatspace-slider-wrapper">
+            <div class="xatspace-slider-track">
+
+              <div class="xatspace-card" data-url="https://ifabriicio.github.io/Jefa/">
+                <div class="xatspace-number">1</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+                <div class="xatspace-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+              <div class="xatspace-card">
+                <div class="xatspace-number">2</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+              </div>
+
+              <div class="xatspace-card" data-url="https://ifabriicio.github.io/Jefa/">
+                <div class="xatspace-number">3</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+                <div class="xatspace-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>
+
+               <div class="xatspace-card" data-url="https://ifabriicio.github.io/Jefa/">
+                <div class="xatspace-number">4</div>
+                <img src="https://xatimg.com/image/4rqpYR2S0PYJ.jpg">
+                <div class="xatspace-colors">
+                  <span style="background:#111"></span>
+                  <span style="background:#444"></span>
+                  <span style="background:#999"></span>
+                </div>
+              </div>             
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- PRECIOS -->
+
+      <div class="xatspace-prices">
+
+        <h3>PRECIOS</h3>
+
+        <div class="xatspace-price-item">
+          <span>Premium</span>
+          <b>4000 xats</b>
+        </div>
+
+        <div class="xatspace-price-item">
+          <span>Normal</span>
+          <b>2000 xats</b>
+        </div>
+
+        <div class="xatspace-price-item">
+          <span>Personalizados</span>
+          <b>1500 xats</b>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- VISOR XATSPACE -->
+<!-- ========================= -->
+
+<div class="xatspace-view-modal" id="xatViewModal">
+
+  <div class="xatspace-view-box">
+
+<div class="xatspace-view-close" onclick="closeXatspaceViewer()">✕</div>
+
+    <div class="xatspace-view-iframe-wrapper">
+      <iframe id="xatViewerFrame"></iframe>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+<script>
+const text = "Esa sonrisa me enloquece el corazón";
+const typedText = document.getElementById("typed-text");
+
+let index = 0;
+
+function typeEffect(){
+  if(index < text.length){
+    typedText.textContent += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, 60); // velocidad
+  }
+}
+
+window.onload = typeEffect;
+
+function openModal(id){
+  document.getElementById(id).style.display = "flex";
+
+  if(id === "profileModal"){
+    startProfileTyping();
+  }
+}
+
+
+function closeModal(id){
+  document.getElementById(id).style.display = "none";
+}
+
+/* ========================= */
+/* PLAYLIST */
+/* ========================= */
+
+const playlist = [
+  {
+    title: "First Date",
+    artist: "Blink-182",
+    src: "music/Blink-182 - First Date.mp3",
+    cover: "portadas/caratula2.jpg"
+  },
+    {
+    title: "In Too Deep",
+    artist: "Sum 41",
+    src: "music/Sum 41 - In Too Deep.mp3",
+    cover: "portadas/caratula4.jpg"
+  },
+  {
+    title: "Superman",
+    artist: "Eminem ft. Dina Rae",
+    src: "music/Eminem - Superman ft. Dina Rae.mp3",
+    cover: "portadas/caratula6.jpg"
+  },
+  {
+    title: "Lose Yourself",
+    artist: "Eminem",
+    src: "music/Eminem - Lose Yourself.mp3",
+    cover: "portadas/caratula5.jpg"
+  },
+  {
+    title: "Everytime",
+    artist: "Simple Plan",
+    src: "music/Simple Plan - Everytime.mp3",
+    cover: "portadas/caratula1.jpg"
+  },
+  {
+    title: "Jet Lag",
+    artist: "Simple Plan",
+    src: "music/Simple Plan - Jet Lag.mp3",
+    cover: "portadas/caratula3.jpg"
+  },
+];
+
+let currentIndex = 0;
+const audio = document.getElementById("audioPlayer");
+
+/* ELEMENTOS UI */
+const discImg = document.querySelector(".disc img");
+const artistEl = document.querySelector(".artist");
+const titleEl = document.querySelector(".title");
+const playlistEl = document.querySelector(".playlist");
+const playBtn = document.querySelector(".play");
+const prevBtn = document.querySelector(".controls button:nth-child(1)");
+const nextBtn = document.querySelector(".controls button:nth-child(3)");
+
+/* ========================= */
+/* CARGAR CANCIÓN */
+/* ========================= */
+
+function loadSong(index, autoplay = true){
+  const song = playlist[index];
+
+  audio.src = song.src;
+  discImg.src = song.cover;
+  artistEl.textContent = song.artist;
+  titleEl.textContent = song.title;
+
+  document.querySelectorAll(".track").forEach((t, i)=>{
+    t.classList.toggle("active", i === index);
+  });
+
+  const activeTrack = document.querySelector(".track.active");
+  activeTrack.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+  if(autoplay){
+    audio.play();
+    playBtn.textContent = "⏸";
+  }
+}
+
+
+/* ========================= */
+/* PLAY / PAUSE */
+/* ========================= */
+
+playBtn.addEventListener("click", ()=>{
+  if(audio.paused){
+    audio.play();
+    playBtn.textContent = "⏸";
+  }else{
+    audio.pause();
+    playBtn.textContent = "▶";
+  }
+});
+
+/* ========================= */
+/* NEXT / PREV */
+/* ========================= */
+
+nextBtn.addEventListener("click", ()=>{
+  currentIndex = (currentIndex + 1) % playlist.length;
+  loadSong(currentIndex);
+});
+
+prevBtn.addEventListener("click", ()=>{
+  currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+  loadSong(currentIndex);
+});
+
+/* ========================= */
+/* CLICK EN PLAYLIST */
+/* ========================= */
+
+playlistEl.innerHTML = playlist.map((song, i)=>`
+  <div class="track ${i === 0 ? "active" : ""}" data-index="${i}">
+    ${i+1} · ${song.artist} – ${song.title}
+  </div>
+`).join("");
+
+playlistEl.addEventListener("click", e=>{
+  if(e.target.classList.contains("track")){
+    currentIndex = Number(e.target.dataset.index);
+    loadSong(currentIndex);
+  }
+});
+
+/* ========================= */
+/* AUTO NEXT */
+/* ========================= */
+
+audio.addEventListener("ended", ()=>{
+  nextBtn.click();
+});
+
+/* ========================= */
+/* AUTOPLAY INICIAL */
+/* ========================= */
+
+loadSong(currentIndex, false);
+
+const activeTrack = document.querySelector(".track.active");
+activeTrack.scrollIntoView({
+  behavior: "smooth",
+  block: "center"
+});
+
+function abrirMarried(){
+  document.getElementById("marriedModal").style.display = "flex";
+  startMarriedTyping();
+}
+
+const marriedText = "Te quiero mucho ♥.";
+const marriedTyped = document.getElementById("married-typed");
+
+let marriedIndex = 0;
+let marriedInterval;
+
+function typeMarried(){
+  if(marriedIndex < marriedText.length){
+    marriedTyped.textContent += marriedText.charAt(marriedIndex);
+    marriedIndex++;
+  }else{
+    clearInterval(marriedInterval);
+  }
+}
+
+function startMarriedTyping(){
+  marriedTyped.textContent = "";
+  marriedIndex = 0;
+  marriedInterval = setInterval(typeMarried, 50);
+}
+
+
+
+
+document.addEventListener("DOMContentLoaded", initFriendsGallery);
+
+function initFriendsGallery(){
+
+  const container = document.getElementById("friendsContainer");
+  if(!container) return;
+
+  const cards = container.querySelectorAll(".friend-card");
+
+  let currentIndex = 0;
+
+  function updateGallery(){
+
+    cards.forEach((card,index)=>{
+
+      card.classList.remove("active","left","right");
+
+      let offset = index - currentIndex;
+
+      if(offset > cards.length/2) offset -= cards.length;
+      if(offset < -cards.length/2) offset += cards.length;
+
+      if(offset === 0){
+        card.classList.add("active");
+      }
+      else if(offset === -1){
+        card.classList.add("left");
+      }
+      else if(offset === 1){
+        card.classList.add("right");
+      }
+    });
+
+  }
+
+  /* CLICK = traer al centro */
+  cards.forEach((card,index)=>{
+    card.addEventListener("click",()=>{
+      currentIndex = index;
+      updateGallery();
+    });
+  });
+
+  /* SCROLL MOUSE */
+  container.addEventListener("wheel",(e)=>{
+    e.preventDefault();
+
+    if(e.deltaY > 0){
+      currentIndex++;
+      if(currentIndex >= cards.length) currentIndex = 0;
+    }else{
+      currentIndex--;
+      if(currentIndex < 0) currentIndex = cards.length-1;
+    }
+
+    updateGallery();
+  });
+
+  updateGallery();
+}
+
+/* ========================= */
+/* GALLERY CENTER EFFECT */
+/* ========================= */
+
+function initGalleryCenter(){
+
+  const cards =
+    document.querySelectorAll("#galleryContainer .gallery-card");
+
+  if(!cards.length) return;
+
+  let current = 1; // centro inicial
+
+  function update(){
+
+    cards.forEach((card,i)=>{
+
+      card.classList.remove(
+        "active",
+        "side",
+        "hidden"
+      );
+
+      if(i === current){
+        card.classList.add("active");
+      }
+      else if(
+        i === current-1 ||
+        i === current+1
+      ){
+        card.classList.add("side");
+      }
+      else{
+        card.classList.add("hidden");
+      }
+
+    });
+
+  }
+
+  /* CLICK CAMBIA CENTRO */
+  cards.forEach((card,i)=>{
+    card.addEventListener("click",()=>{
+      current = i;
+      update();
+    });
+  });
+
+  update();
+}
+
+document.addEventListener(
+  "DOMContentLoaded",
+  initGalleryCenter
+);
+/* ========================= */
+/* 3D MOUSE EFFECT */
+/* ========================= */
+
+const galleryCards =
+document.querySelectorAll(".gallery-card");
+
+galleryCards.forEach(card => {
+
+  card.addEventListener("mousemove", e => {
+
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX =
+      -(y - centerY) / 12;
+
+    const rotateY =
+      (x - centerX) / 12;
+
+    card.style.transform +=
+      ` rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+
+    card.style.transform =
+      card.classList.contains("active")
+        ? "scale(1)"
+        : "scale(.85)";
+
+  });
+
+});
+
+
+/* ================= PROFILE TYPING ================= */
+
+const profileText = "Es mejor único que ser una copia...";
+let profileIndex = 0;
+let profileInterval;
+
+function startProfileTyping(){
+  const el = document.getElementById("profile-typed");
+  el.textContent = "";
+  profileIndex = 0;
+
+  profileInterval = setInterval(()=>{
+    if(profileIndex < profileText.length){
+      el.textContent += profileText.charAt(profileIndex);
+      profileIndex++;
+    }else{
+      clearInterval(profileInterval);
+    }
+  },50);
+}
+
+function scrollGif(type,amount){
+  const el = document.getElementById(type+"Container");
+  el.scrollLeft += amount;
+}
+
+/* DRAG + WHEEL */
+["womenContainer","menContainer"].forEach(id=>{
+
+  const slider = document.getElementById(id);
+
+  if(!slider) return; // ← ESTO ARREGLA TODO
+
+  let isDown=false,startX,scrollLeft;
+
+  slider.addEventListener("mousedown",e=>{
+    isDown=true;
+    startX=e.pageX-slider.offsetLeft;
+    scrollLeft=slider.scrollLeft;
+  });
+
+  slider.addEventListener("mouseleave",()=>isDown=false);
+  slider.addEventListener("mouseup",()=>isDown=false);
+
+  slider.addEventListener("mousemove",e=>{
+    if(!isDown) return;
+    e.preventDefault();
+    const x=e.pageX-slider.offsetLeft;
+    const walk=(x-startX)*1.4;
+    slider.scrollLeft=scrollLeft-walk;
+  });
+
+slider.addEventListener("wheel", e=>{
+  e.preventDefault();
+  slider.scrollLeft += e.deltaY;
+});
+}); // ← cierre del forEach
+
+function scrollLeft(containerId){
+  const container = document.getElementById(containerId);
+  if(container){
+    container.scrollBy({ left: -180, behavior: 'smooth' });
+  }
+}
+
+function scrollRight(containerId){
+  const container = document.getElementById(containerId);
+  if(container){
+    container.scrollBy({ left: 180, behavior: 'smooth' });
+  }
+}
+
+
+function enableDragScroll(containerId){
+
+  const slider = document.getElementById(containerId);
+
+  if(!slider) return; // ← ESTA LINEA LO ARREGLA TODO
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e)=>{
+    isDown = true;
+    slider.style.cursor = 'grabbing';
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', ()=>{
+    isDown = false;
+    slider.style.cursor = 'grab';
+  });
+
+  slider.addEventListener('mouseup', ()=>{
+    isDown = false;
+    slider.style.cursor = 'grab';
+  });
+
+  slider.addEventListener('mousemove', (e)=>{
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.2; 
+    slider.scrollLeft = scrollLeft - walk;
+  });
+}
+
+
+/* =========================================
+   GIF MODAL - SISTEMA COMPLETO
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* =========================
+     TABS GIF
+  ========================= */
+
+  const tabs = document.querySelectorAll(".gifm-pro-tab");
+  const contents = document.querySelectorAll(".gifm-content");
+
+  tabs.forEach(tab => {
+
+    tab.addEventListener("click", function () {
+
+      /* quitar activos */
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      /* activar tab */
+      this.classList.add("active");
+
+      const target =
+        document.getElementById(
+          this.getAttribute("data-target")
+        );
+
+      if (target) {
+        target.classList.add("active");
+      }
+
+    });
+
+  });
+
+});
+
+
+/* =========================================
+   ABRIR MODAL GIF
+========================================= */
+
+function openGifModal(id) {
+
+  const modal = document.getElementById(id);
+  if (!modal) return;
+
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+
+/* =========================================
+   CERRAR MODAL GIF
+========================================= */
+
+function closeGifModal(id) {
+
+  const modal = document.getElementById(id);
+  if (!modal) return;
+
+  modal.style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
+
+/* =========================================
+   CERRAR CLICK FUERA
+========================================= */
+
+window.addEventListener("click", function (e) {
+
+  const gifModal =
+    document.getElementById("gifmModal");
+
+  if (e.target === gifModal)
+    closeGifModal("gifmModal");
+
+});
+
+
+/* =========================================
+   PCBACKGIF - SISTEMA COMPLETO PRO
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const pcbackgifModal = document.getElementById("pcbackgifModal");
+  if (!pcbackgifModal) return;
+
+  /* =========================
+     TABS PCBACKGIF
+  ========================= */
+
+  const pcbackgifTabs = pcbackgifModal.querySelectorAll(".pcbackgif-pro-tab");
+  const pcbackgifContents = pcbackgifModal.querySelectorAll(".pcbackgif-pro-content");
+
+  pcbackgifTabs.forEach(tab => {
+
+    tab.addEventListener("click", function () {
+
+      pcbackgifTabs.forEach(t => t.classList.remove("active"));
+      pcbackgifContents.forEach(c => c.classList.remove("active"));
+
+      this.classList.add("active");
+
+      const targetId = this.getAttribute("data-target");
+      const target = pcbackgifModal.querySelector("#" + targetId);
+
+      if (target) target.classList.add("active");
+
+    });
+
+  });
+
+
+  /* =========================
+     SCROLL CON RUEDA
+  ========================= */
+
+  pcbackgifModal
+    .querySelectorAll(".pcbackgif-slider-track")
+    .forEach(slider => {
+
+      slider.addEventListener("wheel", function (e) {
+
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY;
+
+      });
+
+    });
+
+
+  /* =========================
+     DRAG MOUSE SLIDER
+  ========================= */
+
+  pcbackgifModal
+    .querySelectorAll(".pcbackgif-slider-track")
+    .forEach(slider => {
+
+      let pcbackgifIsDown = false;
+      let pcbackgifStartX;
+      let pcbackgifScrollLeft;
+
+      slider.addEventListener("mousedown", function (e) {
+
+        pcbackgifIsDown = true;
+        pcbackgifStartX = e.pageX - slider.offsetLeft;
+        pcbackgifScrollLeft = slider.scrollLeft;
+
+      });
+
+      slider.addEventListener("mouseleave", () => pcbackgifIsDown = false);
+      slider.addEventListener("mouseup", () => pcbackgifIsDown = false);
+
+      slider.addEventListener("mousemove", function (e) {
+
+        if (!pcbackgifIsDown) return;
+
+        e.preventDefault();
+
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - pcbackgifStartX) * 2;
+
+        slider.scrollLeft = pcbackgifScrollLeft - walk;
+
+      });
+
+    });
+
+
+  /* =========================
+     EFECTO 3D PCBACK STYLE
+  ========================= */
+
+  pcbackgifModal
+    .querySelectorAll(".pcbackgif-slider-track")
+    .forEach(track => {
+
+      const cards = track.querySelectorAll(".pcbackgif-card");
+
+      function pcbackgifUpdate3D() {
+
+        const center = track.scrollLeft + track.clientWidth / 2;
+
+        cards.forEach(card => {
+
+          const cardCenter =
+            card.offsetLeft + card.offsetWidth / 2;
+
+          const distance = cardCenter - center;
+
+          const percent = distance / track.clientWidth;
+
+          const rotateY = percent * -60;
+
+          const scale =
+            1 - Math.min(Math.abs(percent) * .3, .3);
+
+          card.style.transform =
+            `rotateY(${rotateY}deg) scale(${scale})`;
+
+          card.style.opacity =
+            1 - Math.min(Math.abs(percent) * .7, .7);
+
+        });
+
+      }
+
+      track.addEventListener("scroll", pcbackgifUpdate3D);
+      pcbackgifUpdate3D();
+
+    });
+
+});
+
+
+/* =========================================
+   MODAL PRINCIPAL PCBACKGIF
+========================================= */
+
+function pcbackgifOpenModal() {
+
+  const modal = document.getElementById("pcbackgifModal");
+  if (!modal) return;
+
+  modal.style.display = "flex";
+
+  document.body.style.overflow = "hidden";
+
+}
+
+function pcbackgifCloseModal() {
+
+  const modal = document.getElementById("pcbackgifModal");
+  if (!modal) return;
+
+  modal.style.display = "none";
+
+  document.body.style.overflow = "auto";
+
+}
+
+
+/* =========================================
+   CERRAR CLICK FUERA
+========================================= */
+
+window.addEventListener("click", function (e) {
+
+  const pcbackgifModal =
+    document.getElementById("pcbackgifModal");
+
+  const pcbackgifViewModal =
+    document.getElementById("pcbackgifViewModal");
+
+  if (pcbackgifModal && e.target === pcbackgifModal)
+    pcbackgifCloseModal();
+
+  if (pcbackgifViewModal && e.target === pcbackgifViewModal)
+    pcbackgifCloseView();
+
+});
+
+
+/* =========================================
+   VISOR PCBACKGIF
+========================================= */
+
+function pcbackgifOpenView(card) {
+
+  const modal =
+    document.getElementById("pcbackgifViewModal");
+
+  const img =
+    document.getElementById("pcbackgifViewImage");
+
+  if (!modal || !img) return;
+
+  const cardImg = card.querySelector("img");
+
+  if (!cardImg) return;
+
+  img.src = cardImg.src;
+
+  modal.style.display = "flex";
+
+}
+
+function pcbackgifCloseView() {
+
+  const modal =
+    document.getElementById("pcbackgifViewModal");
+
+  if (modal)
+    modal.style.display = "none";
+
+}
+
+/* =========================================
+   PSTYLEGIF - SISTEMA COMPLETO PRO
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const scope = document.querySelector(".pstylegif-modal-scope");
+  if(!scope) return;
+
+  /* =========================
+     TABS PRO
+  ========================= */
+
+  const proTabs = scope.querySelectorAll(".pstylegif-pro-tab");
+  const proContents = scope.querySelectorAll(".pstylegif-pro-content");
+
+  proTabs.forEach(tab => {
+    tab.addEventListener("click", function() {
+
+      proTabs.forEach(t => t.classList.remove("active"));
+      proContents.forEach(c => c.classList.remove("active"));
+
+      this.classList.add("active");
+
+      const target = scope.querySelector(
+        "#" + this.getAttribute("data-target")
+      );
+
+      if(target){
+        target.classList.add("active");
+      }
+
+    });
+  });
+
+});
+
+
+/* =========================================
+   FUNCIONES MODAL PRINCIPAL
+========================================= */
+
+function pstylegifOpenModal(modalId){
+
+  const modal = document.getElementById(modalId);
+
+  if(modal){
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+}
+
+function pstylegifCloseModal(modalId){
+
+  const modal = document.getElementById(modalId);
+
+  if(modal){
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+
+}
+
+
+/* =========================================
+   VISOR PSTYLEGIF
+========================================= */
+
+function pstylegifOpenPcView(card){
+
+  const modal = document.getElementById("pstylegifViewModal");
+  const img = document.getElementById("pstylegifViewImage");
+
+  if(!modal || !img) return;
+
+  const cardImg = card.querySelector("img");
+
+  img.src = cardImg.src;
+
+  modal.style.display = "flex";
+
+}
+
+function pstylegifClosePcView(){
+
+  const modal = document.getElementById("pstylegifViewModal");
+
+  if(modal){
+    modal.style.display = "none";
+  }
+
+}
+
+
+/* =========================================
+   CERRAR MODALES AL HACER CLICK FUERA
+========================================= */
+
+window.addEventListener("click", function(e){
+
+  const pstylegifModal = document.getElementById("pstylegifModal");
+  const pstylegifViewModal = document.getElementById("pstylegifViewModal");
+
+  if(e.target === pstylegifModal){
+    pstylegifCloseModal("pstylegifModal");
+  }
+
+  if(e.target === pstylegifViewModal){
+    pstylegifClosePcView();
+  }
+
+});
+
+
+/* =========================================
+   SCROLL HORIZONTAL CON RUEDA
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const scope = document.querySelector(".pstylegif-modal-scope");
+  if(!scope) return;
+
+  const sliders = scope.querySelectorAll(".pstylegif-slider-track");
+
+  sliders.forEach(slider => {
+
+    slider.addEventListener("wheel", (e)=>{
+
+      e.preventDefault();
+      slider.scrollLeft += e.deltaY;
+
+    });
+
+  });
+
+});
+
+
+/* =========================================
+   DRAG MOUSE SLIDER PRO
+========================================= */
+
+document.querySelectorAll(".pstylegif-slider-track").forEach(slider=>{
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener("mousedown", e=>{
+
+    isDown = true;
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+
+  });
+
+  slider.addEventListener("mouseleave", ()=> isDown=false);
+
+  slider.addEventListener("mouseup", ()=> isDown=false);
+
+  slider.addEventListener("mousemove", e=>{
+
+    if(!isDown) return;
+
+    e.preventDefault();
+
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+
+    slider.scrollLeft = scrollLeft - walk;
+
+  });
+
+});
+
+
+/* =========================================
+   EFECTO 3D DINÁMICO TIPO PCBACK
+========================================= */
+
+document.querySelectorAll(".pstylegif-slider-track").forEach(track=>{
+
+  const cards = track.querySelectorAll(".pstylegif-card");
+
+  function pstylegifUpdate3DEffect(){
+
+    const center = track.scrollLeft + track.clientWidth / 2;
+
+    cards.forEach(card=>{
+
+      const cardCenter =
+        card.offsetLeft + card.offsetWidth / 2;
+
+      const distance = cardCenter - center;
+
+      const percent = distance / track.clientWidth;
+
+      const rotateY = percent * -60;
+      const scale = 1 - Math.min(Math.abs(percent)*.3,.3);
+
+      card.style.transform =
+        `rotateY(${rotateY}deg) scale(${scale})`;
+
+      card.style.opacity =
+        1 - Math.min(Math.abs(percent)*.7,.7);
+
+    });
+
+  }
+
+  track.addEventListener("scroll", pstylegifUpdate3DEffect);
+
+  pstylegifUpdate3DEffect();
+
+});
+
+/* =========================================
+   FPCBACK - SISTEMA COMPLETO PRO (ENCAPSULADO)
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const scope = document.querySelector(".fpcback-modal-scope");
+  if (!scope) return;
+
+  /* =========================
+     TABS FPCBACK
+  ========================= */
+
+  const tabs = scope.querySelectorAll(".fpcbackgif-pro-tab");
+  const contents = scope.querySelectorAll(".fpcbackgif-pro-content");
+
+  tabs.forEach(tab => {
+
+    tab.addEventListener("click", function () {
+
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      this.classList.add("active");
+
+      const target =
+        scope.querySelector(
+          "#" + this.getAttribute("data-target")
+        );
+
+      if (target) {
+        target.classList.add("active");
+      }
+
+    });
+
+  });
+
+
+  /* =========================
+     SCROLL CON RUEDA
+  ========================= */
+
+  scope
+    .querySelectorAll(".fpcbackgif-slider-track")
+    .forEach(slider => {
+
+      slider.addEventListener("wheel", e => {
+
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY;
+
+      });
+
+    });
+
+
+  /* =========================
+     DRAG MOUSE SLIDER
+  ========================= */
+
+  scope
+    .querySelectorAll(".fpcbackgif-slider-track")
+    .forEach(slider => {
+
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      slider.addEventListener("mousedown", e => {
+        isDown = true;
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      });
+
+      slider.addEventListener("mouseleave", () => isDown = false);
+      slider.addEventListener("mouseup", () => isDown = false);
+
+      slider.addEventListener("mousemove", e => {
+
+        if (!isDown) return;
+
+        e.preventDefault();
+
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+
+        slider.scrollLeft = scrollLeft - walk;
+
+      });
+
+    });
+
+
+  /* =========================
+     EFECTO 3D FPCBACK STYLE
+  ========================= */
+
+  scope
+    .querySelectorAll(".fpcbackgif-slider-track")
+    .forEach(track => {
+
+      const cards =
+        track.querySelectorAll(".fpcbackgif-card");
+
+      function update3D() {
+
+        const center =
+          track.scrollLeft + track.clientWidth / 2;
+
+        cards.forEach(card => {
+
+          const cardCenter =
+            card.offsetLeft +
+            card.offsetWidth / 2;
+
+          const distance = cardCenter - center;
+          const percent =
+            distance / track.clientWidth;
+
+          const rotateY = percent * -60;
+          const scale =
+            1 - Math.min(Math.abs(percent) * .3, .3);
+
+          card.style.transform =
+            `rotateY(${rotateY}deg) scale(${scale})`;
+
+          card.style.opacity =
+            1 - Math.min(Math.abs(percent) * .7, .7);
+
+        });
+
+      }
+
+      track.addEventListener("scroll", update3D);
+      update3D();
+
+    });
+
+});
+
+
+/* =========================================
+   MODAL PRINCIPAL
+========================================= */
+
+function fpcbackOpenModal(id) {
+
+  const modal = document.getElementById(id);
+  if (!modal) return;
+
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function fpcbackCloseModal(id) {
+
+  const modal = document.getElementById(id);
+  if (!modal) return;
+
+  modal.style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
+
+/* =========================================
+   CERRAR CLICK FUERA
+========================================= */
+
+window.addEventListener("click", function (e) {
+
+  const fpcbackModal =
+    document.getElementById("fpcbackModal");
+
+  const pcViewModal =
+    document.getElementById("fpcbackViewModal");
+
+  if (e.target === fpcbackModal)
+    fpcbackCloseModal("fpcbackModal");
+
+  if (e.target === pcViewModal)
+    fpcbackClosePcView();
+
+});
+
+
+/* =========================================
+   VISOR FPCBACK
+========================================= */
+
+function fpcbackOpenPcView(card) {
+
+  const modal =
+    document.getElementById("fpcbackViewModal");
+
+  const img =
+    document.getElementById("fpcbackViewImage");
+
+  if (!modal || !img) return;
+
+  const cardImg =
+    card.querySelector("img");
+
+  img.src = cardImg.src;
+
+  modal.style.display = "flex";
+}
+
+function fpcbackClosePcView() {
+
+  const modal =
+    document.getElementById("fpcbackViewModal");
+
+  if (modal)
+    modal.style.display = "none";
+}
+
+
+/* =========================================
+   FPSTYLEGIF - SISTEMA COMPLETO PRO
+   (AISLADO SOLO PARA .fpstyle)
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const fpstyleRoot = document.querySelector(".fpstyle");
+  if (!fpstyleRoot) return;
+
+  /* =========================
+     TABS PRO
+  ========================= */
+
+  const proTabs = fpstyleRoot.querySelectorAll(".fpstylegif-pro-tab");
+  const proContents = fpstyleRoot.querySelectorAll(".fpstylegif-pro-content");
+
+  proTabs.forEach(tab => {
+    tab.addEventListener("click", function() {
+
+      proTabs.forEach(t => t.classList.remove("active"));
+      proContents.forEach(c => c.classList.remove("active"));
+
+      this.classList.add("active");
+
+      const target = fpstyleRoot.querySelector(
+        "#" + this.getAttribute("data-target")
+      );
+
+      if (target) {
+        target.classList.add("active");
+      }
+
+    });
+  });
+
+
+  /* =========================================
+     SCROLL HORIZONTAL CON RUEDA
+  ========================================= */
+
+  const sliders = fpstyleRoot.querySelectorAll(".fpstylegif-slider-track");
+
+  sliders.forEach(slider => {
+
+    slider.addEventListener("wheel", (e) => {
+
+      e.preventDefault();
+      slider.scrollLeft += e.deltaY;
+
+    });
+
+  });
+
+
+  /* =========================================
+     DRAG MOUSE SLIDER PRO
+  ========================================= */
+
+  sliders.forEach(slider => {
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener("mousedown", e => {
+
+      isDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+
+    });
+
+    slider.addEventListener("mouseleave", () => {
+      isDown = false;
+    });
+
+    slider.addEventListener("mouseup", () => {
+      isDown = false;
+    });
+
+    slider.addEventListener("mousemove", e => {
+
+      if(!isDown) return;
+
+      e.preventDefault();
+
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2;
+
+      slider.scrollLeft = scrollLeft - walk;
+
+    });
+
+  });
+
+
+  /* =========================================
+     EFECTO 3D DINÁMICO
+  ========================================= */
+
+  sliders.forEach(track => {
+
+    const cards = track.querySelectorAll(".fpstylegif-card");
+
+    function update3DEffect(){
+
+      const center = track.scrollLeft + track.clientWidth / 2;
+
+      cards.forEach(card => {
+
+        const cardCenter =
+          card.offsetLeft + card.offsetWidth / 2;
+
+        const distance = cardCenter - center;
+
+        const percent = distance / track.clientWidth;
+
+        const rotateY = percent * -60;
+        const scale = 1 - Math.min(Math.abs(percent) * .3, .3);
+
+        card.style.transform =
+          `rotateY(${rotateY}deg) scale(${scale})`;
+
+        card.style.opacity =
+          1 - Math.min(Math.abs(percent) * .7, .7);
+
+      });
+
+    }
+
+    track.addEventListener("scroll", update3DEffect);
+
+    update3DEffect();
+
+  });
+
+});
+
+/* =========================================
+   FUNCIONES MODAL PRINCIPAL (FPSTYLE)
+========================================= */
+
+function fpstyleOpenModal() {
+
+  const modal = document.getElementById("fpstylegifModal");
+
+  if (modal) {
+    modal.style.display = "flex";
+  }
+
+}
+
+function fpstyleCloseModal() {
+
+  const modal = document.getElementById("fpstylegifModal");
+
+  if (modal) {
+    modal.style.display = "none";
+  }
+
+}
+
+
+/* =========================================
+   VISOR FPSTYLEGIF
+========================================= */
+
+function fpstyleOpenGifView(card) {
+
+  const modal = document.getElementById("fpstylegifViewModal");
+  const img = document.getElementById("fpstylegifViewImage");
+
+  if (!modal || !img) return;
+
+  const cardImg = card.querySelector("img");
+
+  img.src = cardImg.src;
+
+  modal.style.display = "flex";
+
+}
+
+function fpstyleCloseGifView() {
+
+  const modal = document.getElementById("fpstylegifViewModal");
+
+  if (modal) {
+    modal.style.display = "none";
+  }
+
+}
+
+
+/* =========================================
+   CERRAR MODALES AL HACER CLICK FUERA
+========================================= */
+
+window.addEventListener("click", function(e) {
+
+  const fpstylegifModal = document.getElementById("fpstylegifModal");
+  const fpstylegifViewModal = document.getElementById("fpstylegifViewModal");
+
+  if (e.target === fpstylegifModal) {
+    fpstyleCloseModal();
+  }
+
+  if (e.target === fpstylegifViewModal) {
+    fpstyleCloseGifView();
+  }
+
+});
+
+
+/* =========================================
+   BANNED - SISTEMA COMPLETO PRO
+   JS TOTALMENTE ENCAPSULADO
+========================================= */
+
+(function(){
+
+/* =========================================
+   TABS PRO
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const bannedRoot = document.querySelector(".banned");
+  if(!bannedRoot) return;
+
+  const proTabs = bannedRoot.querySelectorAll(".banned-pro-tab");
+  const proContents = bannedRoot.querySelectorAll(".banned-pro-content");
+
+  proTabs.forEach(tab => {
+    tab.addEventListener("click", function() {
+
+      proTabs.forEach(t => t.classList.remove("active"));
+      proContents.forEach(c => c.classList.remove("active"));
+
+      this.classList.add("active");
+
+      const target = document.getElementById(
+        this.getAttribute("data-target")
+      );
+
+      if (target) {
+        target.classList.add("active");
+      }
+
+    });
+  });
+
+});
+
+
+/* =========================================
+   FUNCIONES MODAL PRINCIPAL
+========================================= */
+
+window.bannedOpenModal = function(modalId){
+
+  const modal = document.getElementById(modalId);
+
+  if(modal && modal.classList.contains("banned-modal")){
+    modal.style.display = "flex";
+  }
+
+}
+
+window.bannedCloseModal = function(){
+
+  const modal = document.getElementById("bannedModal");
+
+  if(modal){
+    modal.style.display = "none";
+  }
+
+}
+
+
+/* =========================================
+   VISOR BANNED
+========================================= */
+
+window.bannedOpenView = function(card){
+
+  const modal = document.getElementById("bannedViewModal");
+  const img = document.getElementById("bannedViewImage");
+
+  if (!modal || !img) return;
+
+  const cardImg = card.querySelector("img");
+
+  img.src = cardImg.src;
+
+  modal.style.display = "flex";
+
+}
+
+window.bannedCloseView = function(){
+
+  const modal = document.getElementById("bannedViewModal");
+
+  if (modal) {
+    modal.style.display = "none";
+  }
+
+}
+
+
+/* =========================================
+   CERRAR MODALES AL HACER CLICK FUERA
+========================================= */
+
+window.addEventListener("click", function(e) {
+
+  const bannedModal = document.getElementById("bannedModal");
+  const bannedViewModal = document.getElementById("bannedViewModal");
+
+  if (bannedModal && e.target === bannedModal) {
+    bannedModal.style.display = "none";
+  }
+
+  if (bannedViewModal && e.target === bannedViewModal) {
+    bannedCloseView();
+  }
+
+});
+
+
+/* =========================================
+   SCROLL HORIZONTAL CON RUEDA
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const bannedRoot = document.querySelector(".banned");
+  if(!bannedRoot) return;
+
+  const sliders = bannedRoot.querySelectorAll(".banned-slider-track");
+
+  sliders.forEach(slider => {
+
+    slider.addEventListener("wheel", (e) => {
+
+      e.preventDefault();
+      slider.scrollLeft += e.deltaY;
+
+    });
+
+  });
+
+});
+
+
+/* =========================================
+   DRAG MOUSE SLIDER PRO
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const bannedRoot = document.querySelector(".banned");
+  if(!bannedRoot) return;
+
+  bannedRoot.querySelectorAll(".banned-slider-track").forEach(slider => {
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener("mousedown", e => {
+
+      isDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+
+    });
+
+    slider.addEventListener("mouseleave", () => {
+      isDown = false;
+    });
+
+    slider.addEventListener("mouseup", () => {
+      isDown = false;
+    });
+
+    slider.addEventListener("mousemove", e => {
+
+      if(!isDown) return;
+
+      e.preventDefault();
+
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2;
+
+      slider.scrollLeft = scrollLeft - walk;
+
+    });
+
+  });
+
+});
+
+
+/* =========================================
+   EFECTO 3D DINÁMICO
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const bannedRoot = document.querySelector(".banned");
+  if(!bannedRoot) return;
+
+  bannedRoot.querySelectorAll(".banned-slider-track").forEach(track => {
+
+    const cards = track.querySelectorAll(".banned-card");
+
+    function update3DEffect(){
+
+      const center = track.scrollLeft + track.clientWidth / 2;
+
+      cards.forEach(card => {
+
+        const cardCenter =
+          card.offsetLeft + card.offsetWidth / 2;
+
+        const distance = cardCenter - center;
+
+        const percent = distance / track.clientWidth;
+
+        const rotateY = percent * -60;
+        const scale = 1 - Math.min(Math.abs(percent) * .3, .3);
+
+        card.style.transform =
+          `rotateY(${rotateY}deg) scale(${scale})`;
+
+        card.style.opacity =
+          1 - Math.min(Math.abs(percent) * .7, .7);
+
+      });
+
+    }
+
+    track.addEventListener("scroll", update3DEffect);
+
+    update3DEffect();
+
+  });
+
+});
+
+})();
+
+
+
+/* =========================================
+   MODAL SALAS - SISTEMA COMPLETO PRO
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* =========================
+     TABS MODAL SALAS
+  ========================= */
+
+  const modalSalaTabs = document.querySelectorAll(".modal-sala-pro-tab");
+  const modalSalaContents = document.querySelectorAll(".modal-sala-pro-content");
+
+  modalSalaTabs.forEach(tab => {
+
+    tab.addEventListener("click", function () {
+
+      modalSalaTabs.forEach(t => t.classList.remove("active"));
+      modalSalaContents.forEach(c => c.classList.remove("active"));
+
+      this.classList.add("active");
+
+      const modalSalaTarget =
+        document.getElementById(
+          this.getAttribute("data-target")
+        );
+
+      if (modalSalaTarget) {
+        modalSalaTarget.classList.add("active");
+      }
+
+    });
+
+  });
+
+
+  /* =========================
+     SCROLL CON RUEDA
+  ========================= */
+
+  document
+    .querySelectorAll(".modal-sala-slider-track")
+    .forEach(modalSalaSlider => {
+
+      modalSalaSlider.addEventListener("wheel", e => {
+
+        e.preventDefault();
+        modalSalaSlider.scrollLeft += e.deltaY;
+
+      });
+
+    });
+
+
+  /* =========================
+     DRAG MOUSE SLIDER
+  ========================= */
+
+  document
+    .querySelectorAll(".modal-sala-slider-track")
+    .forEach(modalSalaSlider => {
+
+      let modalSalaIsDown = false;
+      let modalSalaStartX;
+      let modalSalaScrollLeft;
+
+      modalSalaSlider.addEventListener("mousedown", e => {
+        modalSalaIsDown = true;
+        modalSalaStartX = e.pageX - modalSalaSlider.offsetLeft;
+        modalSalaScrollLeft = modalSalaSlider.scrollLeft;
+      });
+
+      modalSalaSlider.addEventListener("mouseleave", () => modalSalaIsDown = false);
+      modalSalaSlider.addEventListener("mouseup", () => modalSalaIsDown = false);
+
+      modalSalaSlider.addEventListener("mousemove", e => {
+
+        if (!modalSalaIsDown) return;
+
+        e.preventDefault();
+
+        const modalSalaX = e.pageX - modalSalaSlider.offsetLeft;
+        const modalSalaWalk = (modalSalaX - modalSalaStartX) * 2;
+
+        modalSalaSlider.scrollLeft = modalSalaScrollLeft - modalSalaWalk;
+
+      });
+
+    });
+
+
+  /* =========================
+     EFECTO 3D EN CARDS
+  ========================= */
+
+  document
+    .querySelectorAll(".modal-sala-slider-track")
+    .forEach(modalSalaTrack => {
+
+      const modalSalaCards =
+        modalSalaTrack.querySelectorAll(".modal-sala-card");
+
+      function modalSalaUpdate3D() {
+
+        const modalSalaCenter =
+          modalSalaTrack.scrollLeft + modalSalaTrack.clientWidth / 2;
+
+        modalSalaCards.forEach(modalSalaCard => {
+
+          const modalSalaCardCenter =
+            modalSalaCard.offsetLeft +
+            modalSalaCard.offsetWidth / 2;
+
+          const modalSalaDistance = modalSalaCardCenter - modalSalaCenter;
+
+          const modalSalaPercent =
+            modalSalaDistance / modalSalaTrack.clientWidth;
+
+          const modalSalaRotateY = modalSalaPercent * -60;
+
+          const modalSalaScale =
+            1 - Math.min(Math.abs(modalSalaPercent) * .3, .3);
+
+          modalSalaCard.style.transform =
+            `rotateY(${modalSalaRotateY}deg) scale(${modalSalaScale})`;
+
+          modalSalaCard.style.opacity =
+            1 - Math.min(Math.abs(modalSalaPercent) * .7, .7);
+
+        });
+
+      }
+
+      modalSalaTrack.addEventListener("scroll", modalSalaUpdate3D);
+
+      modalSalaUpdate3D();
+
+    });
+
+
+});
+
+
+/* =========================================
+   MODAL PRINCIPAL SALAS
+========================================= */
+
+function openModalSala(id) {
+
+  const modalSalaElement = document.getElementById(id);
+
+  if (!modalSalaElement) return;
+
+  modalSalaElement.style.display = "flex";
+
+  document.body.style.overflow = "hidden";
+}
+
+function closeModalSala(id) {
+
+  const modalSalaElement = document.getElementById(id);
+
+  if (!modalSalaElement) return;
+
+  modalSalaElement.style.display = "none";
+
+  document.body.style.overflow = "auto";
+}
+
+
+/* =========================================
+   CERRAR CLICK FUERA
+========================================= */
+
+window.addEventListener("click", function (modalSalaEvent) {
+
+  const modalSalaMain =
+    document.getElementById("salasModal");
+
+  const modalSalaViewer =
+    document.getElementById("salasViewModal");
+
+  if (modalSalaEvent.target === modalSalaMain)
+    closeModalSala("salasModal");
+
+  if (modalSalaEvent.target === modalSalaViewer)
+    closeModalSalaView();
+
+});
+
+
+/* =================================================
+   VISOR MODAL SALAS (INTERIOR / EXTERIOR)
+================================================= */
+
+function openModalSalaView(modalSalaCard) {
+
+  const modalSalaViewer =
+    document.getElementById("salasViewModal");
+
+  const modalSalaExteriorImg =
+    document.getElementById("salasviewExterior");
+
+  const modalSalaInteriorImg =
+    document.getElementById("salasviewInterior");
+
+  if (!modalSalaViewer || !modalSalaExteriorImg || !modalSalaInteriorImg)
+    return;
+
+  const modalSalaExteriorURL = modalSalaCard.dataset.exterior;
+  const modalSalaInteriorURL = modalSalaCard.dataset.interior;
+
+  if (modalSalaExteriorURL)
+    modalSalaExteriorImg.src = modalSalaExteriorURL;
+
+  if (modalSalaInteriorURL)
+    modalSalaInteriorImg.src = modalSalaInteriorURL;
+
+  modalSalaViewer.style.display = "flex";
+
+}
+
+
+function closeModalSalaView() {
+
+  const modalSalaViewer =
+    document.getElementById("salasViewModal");
+
+  if (!modalSalaViewer) return;
+
+  modalSalaViewer.style.display = "none";
+
+  const modalSalaExteriorImg =
+    document.getElementById("salasviewExterior");
+
+  const modalSalaInteriorImg =
+    document.getElementById("salasviewInterior");
+
+  if (modalSalaExteriorImg) modalSalaExteriorImg.src = "";
+  if (modalSalaInteriorImg) modalSalaInteriorImg.src = "";
+
+}
+
+
+/* =========================================
+   XATSPACE - SISTEMA COMPLETO PRO
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const xatModal = document.getElementById("xatModal");
+
+  if (!xatModal) return;
+
+  const xatspaceTabs = xatModal.querySelectorAll(".xatspace-tab");
+  const xatspaceContents = xatModal.querySelectorAll(".xatspace-content");
+
+  xatspaceTabs.forEach(tab => {
+
+    tab.addEventListener("click", function() {
+
+      const targetId = this.getAttribute("data-target");
+
+      xatspaceTabs.forEach(t => t.classList.remove("active"));
+      xatspaceContents.forEach(c => c.classList.remove("active"));
+
+      this.classList.add("active");
+
+      const target = xatModal.querySelector("#" + targetId);
+
+      if (target) {
+        target.classList.add("active");
+      }
+
+    });
+
+  });
+
+});
+
+
+/* =========================================
+   FUNCIONES MODAL PRINCIPAL XATSPACE
+========================================= */
+
+function openXatspaceModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = "flex";
+  }
+}
+
+function closeXatspaceModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+/* =========================================
+   VISOR XATSPACE (IFRAME)
+========================================= */
+
+function loadXatspace(url) {
+
+  const viewerModal = document.getElementById("xatViewModal");
+  const iframe = document.getElementById("xatViewerFrame");
+
+  if (viewerModal && iframe) {
+    iframe.src = url;
+    viewerModal.style.display = "flex";
+  }
+}
+
+function closeXatspaceViewer() {
+
+  const viewerModal = document.getElementById("xatViewModal");
+  const iframe = document.getElementById("xatViewerFrame");
+
+  if (viewerModal && iframe) {
+    iframe.src = "";
+    viewerModal.style.display = "none";
+  }
+}
+
+
+/* =========================================
+   CERRAR MODALES AL HACER CLICK FUERA
+========================================= */
+
+window.addEventListener("click", function(e) {
+
+  const xatModal = document.getElementById("xatModal");
+  const xatViewModal = document.getElementById("xatViewModal");
+
+  if (e.target === xatModal) {
+    xatModal.style.display = "none";
+  }
+
+  if (e.target === xatViewModal) {
+    closeXatspaceViewer();
+  }
+
+});
+
+
+/* =========================================
+   SCROLL HORIZONTAL CON RUEDA
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const sliders = document.querySelectorAll(".xatspace-slider-track");
+
+  sliders.forEach(slider => {
+
+    slider.addEventListener("wheel", (e) => {
+
+      e.preventDefault();
+
+      slider.scrollLeft += e.deltaY;
+
+    });
+
+  });
+
+});
+
+
+/* =========================================
+   DRAG MOUSE SLIDER XATSPACE
+========================================= */
+
+document.querySelectorAll(".xatspace-slider-track").forEach(slider => {
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener("mousedown", e => {
+
+    isDown = true;
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+
+  });
+
+  slider.addEventListener("mouseleave", () => {
+    isDown = false;
+  });
+
+  slider.addEventListener("mouseup", () => {
+    isDown = false;
+  });
+
+  slider.addEventListener("mousemove", e => {
+
+    if(!isDown) return;
+
+    e.preventDefault();
+
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+
+    slider.scrollLeft = scrollLeft - walk;
+
+  });
+
+});
+
+
+/* =========================================
+   EFECTO 3D DINÁMICO XATSPACE
+========================================= */
+
+document.querySelectorAll(".xatspace-slider-track").forEach(track => {
+
+  const cards = track.querySelectorAll(".xatspace-card");
+
+  function update3DEffect(){
+
+    const center = track.scrollLeft + track.clientWidth / 2;
+
+    cards.forEach(card => {
+
+      const cardCenter =
+        card.offsetLeft + card.offsetWidth / 2;
+
+      const distance = cardCenter - center;
+
+      const percent = distance / track.clientWidth;
+
+      const rotateY = percent * -60;
+      const scale = 1 - Math.min(Math.abs(percent) * .3, .3);
+
+      card.style.transform =
+        `rotateY(${rotateY}deg) scale(${scale})`;
+
+      card.style.opacity =
+        1 - Math.min(Math.abs(percent) * .7, .7);
+
+    });
+
+  }
+
+  track.addEventListener("scroll", update3DEffect);
+
+  update3DEffect();
+
+});
+
+/* =========================================
+   CLICK EN CARD → ABRIR VISOR
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const cards = document.querySelectorAll(".xatspace-card");
+
+  cards.forEach(card => {
+
+    card.addEventListener("click", function(){
+
+      const url = this.getAttribute("data-url");
+
+      if(url){
+        loadXatspace(url);
+      }
+
+    });
+
+  });
+
+});
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const nick = document.querySelector(".fabricio-nick");
+
+  if(!nick) return;
+
+  const text = nick.textContent;
+
+  nick.textContent = "";
+
+  for (const char of text){
+
+    const span = document.createElement("span");
+
+    span.textContent = char;
+
+    nick.appendChild(span);
+
+  }
+
+});
+
+function entrarXat(){
+
+const intro = document.getElementById("introXat");
+const wrapper = document.querySelector(".wrapper");
+
+if(!intro || !wrapper) return;
+
+/* iniciar musica */
+if(typeof loadSong === "function"){
+  loadSong(currentIndex, true);
+}
+
+/* evita doble click */
+intro.style.pointerEvents = "none";
+
+/* animacion salida */
+intro.classList.add("fadeIntro");
+
+setTimeout(() => {
+
+intro.style.display = "none";
+
+wrapper.classList.add("showWrapper");
+
+wrapper.style.opacity = "1";
+wrapper.style.pointerEvents = "auto";
+
+}, 800);
+
+}
+
+/* Bloquear clic derecho */
+document.addEventListener('contextmenu', function(e){
+  e.preventDefault();
+});
+
+/* Bloquear selección de texto */
+document.addEventListener('selectstart', function(e){
+  e.preventDefault();
+});
+
+/* Bloquear arrastrar imágenes/texto */
+document.addEventListener('dragstart', function(e){
+  e.preventDefault();
+});
+</script>
+
+</html>
